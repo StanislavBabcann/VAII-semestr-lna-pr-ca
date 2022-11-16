@@ -55,7 +55,7 @@ if (isset($_GET['logPotvrdit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="LoginPage.css">
+    <link rel="stylesheet" href="css/LoginPage.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
 </head>

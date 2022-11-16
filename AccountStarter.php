@@ -41,7 +41,7 @@ $_SESSION['logged'] = 1;
 <head>
     <meta charset="UTF-8">
     <title>Account menu</title>
-    <link rel="stylesheet" href="MainPage.css">
+    <link rel="stylesheet" href="css/MainPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
 

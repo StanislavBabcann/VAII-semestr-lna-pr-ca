@@ -37,7 +37,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Password reset</title>
-    <link rel="stylesheet" href="PasswordRecovery.css">
+    <link rel="stylesheet" href="css/PasswordRecovery.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
 </head>

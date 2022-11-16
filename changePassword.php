@@ -44,7 +44,7 @@ if (isset($_GET['potvrZmenHesla'])) {
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="changePassword.css">
+    <link rel="stylesheet" href="css/changePassword.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
     <script src="javascripts.js" , language="JavaScript" type="text/javascript">

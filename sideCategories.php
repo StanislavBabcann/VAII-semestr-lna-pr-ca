@@ -8,7 +8,7 @@
 <head>
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
     <title>Supplement engineer</title>
-    <link rel="stylesheet" href="sideCategories.css">
+    <link rel="stylesheet" href="css/sideCategories.css">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
 

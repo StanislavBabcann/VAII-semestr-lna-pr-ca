@@ -77,7 +77,7 @@ if (isset($_GET['potvrdit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit profile</title>
-    <link rel="stylesheet" href="EditProfile.css">
+    <link rel="stylesheet" href="css/EditProfile.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
     <script src="javascripts.js" , language="JavaScript" type="text/javascript">

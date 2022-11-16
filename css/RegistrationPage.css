@@ -7,7 +7,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/uvodny.png);
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../images/uvodny.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -16,7 +16,7 @@
 .loginbox{
     border-radius: 30px;
     width: 320px;
-    height: 600px;
+    height: 720px;
     background: #000;
     color: #fff;
     top: 50%;
@@ -40,14 +40,13 @@ h1{
 .loginbox p{
     margin: 0;
     padding: 0;
-    margin-bottom: 0.5vw;
     font-weight: bold;
 
 }
 
 .loginbox input{
     width: 100%;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .loginbox input[type="text"], input[type="password"]

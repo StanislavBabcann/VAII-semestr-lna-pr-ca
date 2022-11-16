@@ -88,7 +88,7 @@ $db = new Database();
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="RegistrationPage.css">
+    <link rel="stylesheet" href="css/RegistrationPage.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
 

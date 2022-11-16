@@ -10,7 +10,7 @@
 <head>
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
     <title>Supplement engineer</title>
-    <link rel="stylesheet" href="MainPage.css">
+    <link rel="stylesheet" href="css/MainPage.css">
     <meta charset="UTF-8">
 
 

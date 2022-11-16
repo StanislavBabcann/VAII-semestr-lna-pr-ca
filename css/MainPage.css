@@ -8,7 +8,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/uvodny.png);
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../images/uvodny.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -158,7 +158,7 @@ h1{
     top: 10vw;
     width: 66vw;
     height: 30vw;
-    background-image: linear-gradient(rgba(0, 0, 71, 0),rgba(0, 0, 71, 0)),url(images/whiteCanvas.png);
+    background-image: linear-gradient(rgba(0, 0, 71, 0),rgba(0, 0, 71, 0)),url(../images/whiteCanvas.png);
     background-position: center;
     background-size: cover;
     position: relative;
