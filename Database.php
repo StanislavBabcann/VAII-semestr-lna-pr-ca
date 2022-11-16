@@ -26,7 +26,7 @@ class Database
     public function upravInfoPouzivatela(Pouzivatel $pouzivatel) {
         $sql = "UPDATE uzivatelia SET meno=?, priezvisko=?, mail=?, mesto=?, ulica=? WHERE mail = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$pouzivatel->meno, $pouzivatel->priezvisko, $pouzivatel->mail, $pouzivatel->mesto, $pouzivatel->ulica, $pouzivatel->mail]);
+        $stmt->execute([$pouzivatel->meno, $pouzivatel->priezvisko, $pouzivatel->mail, $pouzivatel->mesto, $pouzivatel->ulica, $pouzivatel->druhyMail]);
     }
 
     public function zmenHesloPouzivatela($mail, $heslo) {

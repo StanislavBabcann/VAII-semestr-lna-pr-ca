@@ -23,6 +23,7 @@ $editLast = $pouzivatel->priezvisko;
 $editMail = $pouzivatel->mail;
 $editMesto = $pouzivatel->mesto;
 $editUlica = $pouzivatel->ulica;
+$staryMail = $pouzivatel->mail;
 
 if (isset($_GET['potvrdit'])) {
 
@@ -59,6 +60,7 @@ if (isset($_GET['potvrdit'])) {
         $upravenyPouzivatel->mail = $editMail;
         $upravenyPouzivatel->mesto = $editMesto;
         $upravenyPouzivatel->ulica = $editUlica;
+        $upravenyPouzivatel->druhyMail = $staryMail;
 
 
         $db->upravInfoPouzivatela($upravenyPouzivatel);
@@ -112,7 +114,7 @@ if (isset($_GET['potvrdit'])) {
             <p>Street</p>
             <input type="text" name="ulica" placeholder="Enter street" value = "<?php echo $editUlica ?>">
             <span class = "error" style="color: red"> <?php echo $ulicaErr;?></span>
-            <input type="submit" name="potvrdit" value="Edit" onclick="return confirmEditAccount()">
+            <input type="submit" name="potvrdit" value="Edit" onclick="return validateEditInput(editProfileForm.meno.value, editProfileForm.priezvisko.value, editProfileForm.mail.value, editProfileForm.mesto.value, editProfileForm.ulica.value)">
         </form>
 
 

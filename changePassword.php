@@ -65,14 +65,14 @@ if (isset($_GET['potvrZmenHesla'])) {
     <div class = "loginbox">
 
         <h1>Change password</h1>
-        <form name="changePasswordForm" onsubmit="return confirmChangePassword()">
+        <form name="changePasswordForm" >
             <p>Enter new password</p>
             <input type="password" name="changePassword" placeholder="Enter password">
             <span class = "error" style="color: red"> <?php echo $firstPasErr;?></span>
             <p>Re-enter password</p>
             <input type="password" name="changePassRe" placeholder="Re-enter password">
             <span class = "error" style="color: red"> <?php echo $secondPasErr;?></span>
-            <input type="submit" name="potvrZmenHesla" value="Change password">
+            <input type="submit" name="potvrZmenHesla" value="Change password" onclick="return validateEditPasswordForm(changePasswordForm.changePassword.value, changePasswordForm.changePassRe.value)">
         </form>
 
 
