@@ -1,0 +1,289 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Sofia", sans-serif;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/uvodny.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    width: 150px;
+}
+
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 0.75vw 1vw;
+    position: relative;
+}
+
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5vw;
+}
+
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 0.2vw;
+    background: green;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+
+
+h1{
+    font-size: 3vw;
+    color: white;
+
+
+}
+
+.starterBox h1 {
+    font-size: 2.75vw;
+    color: white;
+}
+
+.main-title{
+    top: 8vw;
+    left: 24vw;
+    position: absolute;
+}
+
+.main-title h1{
+    font-size: 4.5vw;
+    color: white;
+
+}
+
+.main-title p{
+    font-family: "Georgia", "Courier New", monospace;
+    font-size: 2.5vw;
+    left: 3vw;
+    position: absolute;
+    color: white;
+}
+
+.categories-title{
+    font-family: "Georgia", "Courier New", monospace;
+    position: absolute;
+    text-align: center;
+    width: 19vw;
+    top: 3vw;
+    left: 2.5vw;
+
+}
+
+.text-box{
+    position: absolute;
+    top: 28vw;
+    left: 12vw;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.text-box a{
+    margin-top: 0.2vw;
+    font-family: "Georgia", "Courier New", monospace;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5vw;
+}
+
+.hero-btn{
+    margin-bottom: 0.2vw;
+    border-radius: 15%;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 0.1vw solid #fff;
+
+    padding: 0.75vw 2vw;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.hero-btn:hover{
+    border: 1px solid #ffffff;
+    background: limegreen;
+    transition: 0.3s;
+    transform: translateX(-5px);
+}
+
+.hero-btn:active {
+    transform: translateX(5px);
+    border: 1px solid #ffffff;
+    background: limegreen;
+    transition: 0.3s;
+}
+
+.best-products-canvas{
+    margin: auto;
+    text-align: center;
+    left: 8vw;
+    top: 10vw;
+    width: 66vw;
+    height: 30vw;
+    background-image: linear-gradient(rgba(0, 0, 71, 0),rgba(0, 0, 71, 0)),url(images/whiteCanvas.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.best-products-column-image{
+    flex-basis: 22vw;
+    border-radius: 2vw;
+    margin-bottom:0.5vw;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.best-products-column-image img{
+    width: 12vw;
+
+}
+
+.best-products-layer{
+    background: transparent;
+    height: 14vw;
+    width: 24vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.75s;
+}
+
+.best-products-layer:hover{
+    background: limegreen;
+    opacity: 0.65;
+}
+
+.best-products-layer h3{
+    width: 20vw;
+    font-weight: 500;
+    color: black;
+    font-size: 2vw;
+    bottom: -0.1vw;
+    left: 11vw;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.best-products-layer:hover h3{
+    bottom: 6vw;
+    opacity: 1;
+
+}
+
+.best-products-row{
+    margin-top: 0.025vw;
+    display:flex;
+    justify-content: space-between;
+}
+
+.starterBox{
+    border-radius: 30px;
+    width: 500px;
+    height: 540px;
+    background: #000;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 30px;
+}
+
+.starterBox input{
+    width: 100%;
+    margin-top:1vw;
+    border: none;
+    outline: none;
+    height: 4vw;
+
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px
+}
+
+.starterBox input[type="submit"] {
+    background: limegreen;
+}
+
+.starterBox input[type="button"] {
+    background: darkred;
+    text-align: center;
+}
+
+
+
+
+.starterBox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color:#000;
+
+}
+
+.starterBox input[type="button"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color:#000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
