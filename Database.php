@@ -1,5 +1,6 @@
 <?php
 
+
 class Database
 {
 
@@ -70,6 +71,14 @@ class Database
 
         $stmt = $this->pdo->prepare("DELETE FROM uzivatelia");
         $stmt->execute();
+    }
+
+    public function dajProduktyPodKategorie($podKategoria) {
+
+
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE podKategoria = ? && pocetKusov != 0");
+        $sql->execute([$podKategoria]);
+        return $sql->fetchAll();
     }
 
 }

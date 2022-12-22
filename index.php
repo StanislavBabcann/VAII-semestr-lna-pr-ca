@@ -1,7 +1,9 @@
 <?php
+
+    include "LogginManager.php";
     session_start();
 
-
+    $loginManager = new LogginManager();
 
 ?>
 
@@ -24,15 +26,7 @@
 
         <?php
 
-        if (isset($_SESSION['logged'])) {
-            if ($_SESSION['logged'] == 0) {
-                include_once "unloggedUserLayout.php";
-            } else {
-                include_once "loggedUserLayout.php";
-            }
-        } else {
-            include_once "unloggedUserLayout.php";
-        }
+        $loginManager->setLayout();
 
 
         ?>
@@ -42,7 +36,7 @@
 
         </div>
 
-        <section class="best-products-canvas">
+        <section class="listed-products">
 
 
 

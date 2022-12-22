@@ -71,13 +71,13 @@ h1{
 }
 
 .main-title{
-    top: 8vw;
-    left: 24vw;
+    top: 3.5vw;
+    left: 23.9vw;
     position: absolute;
 }
 
 .main-title h1{
-    font-size: 4.5vw;
+    font-size: 3vw;
     color: white;
 
 }
@@ -89,6 +89,52 @@ h1{
     position: absolute;
     color: white;
 }
+
+.page-numbering {
+    bottom: 0vw;
+    left: 45vw;
+    position: absolute;
+}
+
+.page-numbering ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0.75vw 1vw;
+    position: relative;
+
+}
+
+.page-numbering ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1vw;
+}
+
+************
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 0.75vw 1vw;
+    position: relative;
+}
+
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5vw;
+}
+
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 0.2vw;
+    background: green;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+********************
+
 
 .categories-title{
     font-family: "Georgia", "Courier New", monospace;
@@ -151,25 +197,36 @@ h1{
     transition: 0.3s;
 }
 
-.best-products-canvas{
-    margin: auto;
+.listed-products{
+    top: 5vw;
+    left: 18.5vw;
     text-align: center;
-    left: 8vw;
-    top: 10vw;
     width: 66vw;
     height: 30vw;
-    background-image: linear-gradient(rgba(0, 0, 71, 0),rgba(0, 0, 71, 0)),url(../images/whiteCanvas.png);
     background-position: center;
     background-size: cover;
-    position: relative;
+    position: absolute;
 }
 
 .best-products-column-image{
     flex-basis: 22vw;
     border-radius: 2vw;
     margin-bottom:0.5vw;
+
+    margin-right: 3vw;
     position: relative;
-    overflow: hidden;
+
+
+
+}
+
+.separator{
+    margin-left: 5.5vw;
+}
+
+.best-products-row{
+    margin-top: 3vw;
+    display:flex;
 
 }
 
@@ -212,11 +269,28 @@ h1{
 
 }
 
-.best-products-row{
-    margin-top: 0.025vw;
-    display:flex;
-    justify-content: space-between;
+
+
+.best-products-column-image h1 {
+
+    color: yellow;
+    font-size: 1vw;
+    position: absolute;
+    text-align: center;
+
 }
+
+.best-products-column-image p{
+
+    color: orange;
+    font-size: 1.5vw;
+    bottom: 0.5vw;
+    left: 4vw;
+    position: absolute;
+
+}
+
+
 
 .starterBox{
     border-radius: 30px;

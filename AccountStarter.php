@@ -45,7 +45,7 @@ $_SESSION['logged'] = 1;
     <link rel="preconnect" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
 
-    <script type="text/javascript" language="JavaScript" src="javascriptMethods.js">
+    <script type="text/javascript" language="JavaScript" src="javascripts.js">
 
     </script>
 
