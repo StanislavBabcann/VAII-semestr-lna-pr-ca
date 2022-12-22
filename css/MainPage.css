@@ -90,51 +90,6 @@ h1{
     color: white;
 }
 
-.page-numbering {
-    bottom: 0vw;
-    left: 45vw;
-    position: absolute;
-}
-
-.page-numbering ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 0.75vw 1vw;
-    position: relative;
-
-}
-
-.page-numbering ul li a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 1vw;
-}
-
-************
-.nav-links ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 0.75vw 1vw;
-    position: relative;
-}
-
-.nav-links ul li a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5vw;
-}
-
-.nav-links ul li::after{
-    content: '';
-    width: 0%;
-    height: 0.2vw;
-    background: green;
-    display: block;
-    margin: auto;
-    transition: 0.5s;
-}
-********************
-
 
 .categories-title{
     font-family: "Georgia", "Courier New", monospace;
@@ -344,6 +299,30 @@ h1{
     background: #ffc107;
     color:#000;
 
+}
+
+.pageNumebrsBox {
+
+    width: 23vw;
+    height: 3vw;
+    top: 46vw;
+    left: 60vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+
+}
+
+.pageNumebrsBox input{
+    width: 2vw;
+    margin-top:0.5vw;
+    margin-left: 1vw;
+    border: none;
+    outline: none;
+    height: 2vw;
+    alignment: center;
+    font-size: 1vw;
+    border-radius: 20px
 }
 
 

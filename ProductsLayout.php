@@ -20,11 +20,41 @@ $produkty = $db->dajProduktyPodKategorie($chosenCategory);
 $currentPage = $_SESSION['currentPageNumber'];
 $pocetProduktov = sizeof($produkty);
 
-$helpIndex = ($currentPage - 1) * 10;
+$helpIndexForPrintingProducts = ($currentPage - 1) * 10;
 
 
-echo sizeof($produkty);
-echo $produkty[0]["nazovProduktu"];
+$stranky = array('prvaStranka', 'druhaStranka', 'tretiaStranka', 'stvrtaStranka','piataStranka');
+
+echo $currentPage;
+
+
+
+
+
+for ($i = 0; $i < 5; $i++) {
+    if (isset($_GET[$stranky[$i]])) {
+        $_SESSION['currentPageNumber'] = $i + 1;
+        header("location: ProductsLayout.php");
+        die();
+
+    }
+}
+
+if (isset($_GET['krokSpat'])) {
+    $_SESSION['currentPageNumber']--;
+    header("location: ProductsLayout.php");
+    die();
+
+}
+
+if (isset($_GET['krokDalej'])) {
+    $_SESSION['currentPageNumber']++;
+    header("location: ProductsLayout.php");
+    die();
+
+}
+
+
 
 ?>
 
@@ -38,8 +68,11 @@ echo $produkty[0]["nazovProduktu"];
 
 
 </head>
+
+
+
 <body>
-    <section class = "header">
+    <section class = "header" >
 
         <?php
 
@@ -70,12 +103,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts , $pocetProduktov)) {?>
 
-                     <img src=<?php  echo $produkty[$helpIndex]["cestaKObrazku"]?> alt=""  >
+                     <img src=<?php  echo $produkty[$helpIndexForPrintingProducts]["cestaKObrazku"]?> alt=""  >
 
-                    <h1> <?php echo $produkty[$helpIndex]["nazovProduktu"]?> </h1>
-                    <p> <?php echo $produkty[$helpIndex]["cena"]?> </p>
+                    <h1> <?php echo $produkty[$helpIndexForPrintingProducts]["nazovProduktu"]?> </h1>
+                    <p> <?php echo $produkty[$helpIndexForPrintingProducts]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -84,12 +117,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 1 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 1 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 1]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 1]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 1]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 1]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -98,12 +131,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 2 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 2 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 2]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 2]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 2]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 2]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -112,12 +145,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 3 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 3 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 3]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 3]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 3]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 3]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -126,27 +159,18 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 4 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 4 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 4]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 4]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 4]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 4]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["cena"]?> </p>
                     <?php } ?>
 
 
                 </div>
-
-
-
-
-
-
-
 
             </div>
-
-
 
 
             <div class="best-products-row">
@@ -161,12 +185,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 5 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 5 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 5]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 5]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 5]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 5]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -175,12 +199,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 6 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 6 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 6]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 6]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 6]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 6]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -189,12 +213,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 7 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 7 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 7]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 7]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 7]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 7]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -203,12 +227,12 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 8 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 8 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 8]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 8]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 8]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 8]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -217,27 +241,16 @@ echo $produkty[0]["nazovProduktu"];
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($currentPage,$helpIndex + 9 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 9 , $pocetProduktov)) {?>
 
-                        <img src=<?php  echo $produkty[$helpIndex + 9]["cestaKObrazku"]?> alt=""  >
+                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 9]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndex + 9]["nazovProduktu"]?> </h1>
-                        <p> <?php echo $produkty[$helpIndex + 9]["cena"]?> </p>
+                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["nazovProduktu"]?> </h1>
+                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["cena"]?> </p>
                     <?php } ?>
 
 
                 </div>
-
-                <?php
-
-                $counter = i;
-                foreach ($produkty as $riadokProduktu)
-
-
-
-
-
-
 
             </div>
 
@@ -247,18 +260,41 @@ echo $produkty[0]["nazovProduktu"];
 
         </section>
 
-        <nav class="page-numbering">
+        <div class="pageNumebrsBox">
 
-            <ul>
-                <li><a href="" >1</a></li>
-                <li><a href="LoginPage.php" > 2</a></li>
-                <li><a href="">3</a></li>
+            <form>
 
-            </ul>
+                <?php if ($productShowingManager->showBackButton($currentPage)) { ?>
+                    <input type="submit" name="krokSpat"  value="←">
+                <?php } ?>
+
+                <input type="submit" name="prvaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 1)) { ?> style="background-color: #ffc107" <?php } ?> value="1">
+
+                <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 2)) { ?>
+                    <input type="submit" name="druhaStranka"  <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 2)) { ?> style="background-color: #ffc107" <?php } ?> value="2">
+                <?php } ?>
+
+                <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 3)) { ?>
+                    <input type="submit" name="tretiaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 3)) { ?> style="background-color: #ffc107" <?php } ?> value="3">
+                <?php } ?>
+
+                <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 4)) { ?>
+                    <input type="submit" name="stvrtaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 4)) { ?> style="background-color: #ffc107" <?php } ?> value="4">
+                <?php } ?>
+
+                <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 5)) { ?>
+                    <input type="submit" name="piataStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 5)) { ?> style="background-color: #ffc107" <?php } ?> value="5">
+                <?php } ?>
+
+                <?php if ($productShowingManager->showNextButton($currentPage, $pocetProduktov)) { ?>
+                    <input type="submit" name="krokDalej" value="→">
+                <?php } ?>
 
 
+            </form>
 
-        </nav>
+
+        </div>
 
 
         <?php

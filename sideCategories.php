@@ -3,7 +3,7 @@
 define("chosenCategoryConst", 'choosenCategorySES');
 
 
-$_SESSION['currentPageNumber'] = 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +97,7 @@ $_SESSION['currentPageNumber'] = 1;
 
             <button onclick="myFunction()" id = "prvy" class="dropbtn">Proteins</button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="ProductsLayout.php">Whey Protein <?php $_SESSION['choosenCategorySES'] = "Whey protein"?></a>
+                <a href="ProductsLayout.php">Whey Protein <?php $_SESSION['choosenCategorySES'] = "Whey protein"; $_SESSION['currentPageNumber'] = 1;?></a>
                 <a href="#about"> Protein Blends</a>
                 <a href="#contact">Night Protein</a>
                 <a href="#contact">Plant-Based Protein</a>
