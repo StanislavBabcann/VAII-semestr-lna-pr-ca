@@ -239,7 +239,7 @@ h1{
 
     color: orange;
     font-size: 1.5vw;
-    bottom: 0.5vw;
+    bottom: 0.125vw;
     left: 4vw;
     position: absolute;
 
@@ -277,10 +277,7 @@ h1{
     background: limegreen;
 }
 
-.starterBox input[type="button"] {
-    background: darkred;
-    text-align: center;
-}
+
 
 
 
@@ -293,13 +290,7 @@ h1{
 
 }
 
-.starterBox input[type="button"]:hover
-{
-    cursor: pointer;
-    background: #ffc107;
-    color:#000;
 
-}
 
 .pageNumebrsBox {
 
@@ -323,6 +314,58 @@ h1{
     alignment: center;
     font-size: 1vw;
     border-radius: 20px
+}
+
+.pageNumebrsBox input[type="submit"]:hover {
+    cursor: pointer;
+    background: limegreen;
+    color:#000;
+}
+
+.best-products-effect{
+    background: transparent;
+    height: 13.6vw;
+    width: 12vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.best-products-effect:hover{
+    background: darkblue;
+    opacity: 0.65;
+}
+
+.best-products-effect h1{
+
+
+    left: 6vw;
+    bottom: -2.5vw;
+
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 0.5s;
+
+    color: yellow;
+    font-size: 1vw;
+    width: 12vw;
+    height: 2vw;
+    text-align: center;
+
+
+
+}
+
+.best-products-effect:hover h1{
+    bottom: 6.5vw;
+
+
+    font-weight: bold;
+
+
+
+
 }
 
 

@@ -18,6 +18,7 @@ $chosenCategory = $_SESSION['choosenCategorySES'];
 
 $produkty = $db->dajProduktyPodKategorie($chosenCategory);
 $currentPage = $_SESSION['currentPageNumber'];
+
 $pocetProduktov = sizeof($produkty);
 
 $helpIndexForPrintingProducts = ($currentPage - 1) * 10;
@@ -33,6 +34,7 @@ echo $currentPage;
 
 for ($i = 0; $i < 5; $i++) {
     if (isset($_GET[$stranky[$i]])) {
+
         $_SESSION['currentPageNumber'] = $i + 1;
         header("location: ProductsLayout.php");
         die();
@@ -40,19 +42,26 @@ for ($i = 0; $i < 5; $i++) {
     }
 }
 
+$clicked = false;
+
+/*
 if (isset($_GET['krokSpat'])) {
-    $_SESSION['currentPageNumber']--;
+
+    $_SESSION['currentPageNumber'] = $currentPage - 1;
     header("location: ProductsLayout.php");
     die();
 
 }
 
 if (isset($_GET['krokDalej'])) {
-    $_SESSION['currentPageNumber']++;
+    $_SESSION['currentPageNumber'] = $currentPage + 1;
     header("location: ProductsLayout.php");
     die();
 
 }
+*/
+
+
 
 
 
@@ -105,9 +114,14 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts , $pocetProduktov)) {?>
 
+                            <a href="">
                      <img src=<?php  echo $produkty[$helpIndexForPrintingProducts]["cestaKObrazku"]?> alt=""  >
 
+
+                        <div class="best-products-effect" >
                     <h1> <?php echo $produkty[$helpIndexForPrintingProducts]["nazovProduktu"]?> </h1>
+                        </div>
+                            </a>
                     <p> <?php echo $produkty[$helpIndexForPrintingProducts]["cena"]?> </p>
                     <?php } ?>
 
@@ -119,9 +133,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 1 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 1]["cestaKObrazku"]?> alt=""  >
 
+                    <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["nazovProduktu"]?> </h1>
+                    </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["cena"]?> </p>
                     <?php } ?>
 
@@ -133,9 +151,14 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 2 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 2]["cestaKObrazku"]?> alt=""  >
 
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["nazovProduktu"]?> </h1>
+                        <div class="best-products-effect" >
+                            <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
+
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["cena"]?> </p>
                     <?php } ?>
 
@@ -147,9 +170,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 3 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 3]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["cena"]?> </p>
                     <?php } ?>
 
@@ -161,9 +188,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 4 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 4]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["cena"]?> </p>
                     <?php } ?>
 
@@ -187,9 +218,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 5 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 5]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["cena"]?> </p>
                     <?php } ?>
 
@@ -201,9 +236,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 6 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 6]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["cena"]?> </p>
                     <?php } ?>
 
@@ -215,9 +254,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 7 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 7]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["cena"]?> </p>
                     <?php } ?>
 
@@ -229,9 +272,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 8 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 8]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["cena"]?> </p>
                     <?php } ?>
 
@@ -243,9 +290,13 @@ if (isset($_GET['krokDalej'])) {
 
                     <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 9 , $pocetProduktov)) {?>
 
+                    <a href="">
                         <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 9]["cestaKObrazku"]?> alt=""  >
 
+                        <div class="best-products-effect" >
                         <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["nazovProduktu"]?> </h1>
+                        </div>
+                    </a>
                         <p> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["cena"]?> </p>
                     <?php } ?>
 
@@ -264,31 +315,36 @@ if (isset($_GET['krokDalej'])) {
 
             <form>
 
+                <!--
                 <?php if ($productShowingManager->showBackButton($currentPage)) { ?>
                     <input type="submit" name="krokSpat"  value="←">
                 <?php } ?>
+                -->
 
-                <input type="submit" name="prvaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 1)) { ?> style="background-color: #ffc107" <?php } ?> value="1">
+
+                <input type="submit" name="prvaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 1)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="1">
 
                 <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 2)) { ?>
-                    <input type="submit" name="druhaStranka"  <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 2)) { ?> style="background-color: #ffc107" <?php } ?> value="2">
+                    <input type="submit" name="druhaStranka"  <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 2)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="2">
                 <?php } ?>
 
                 <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 3)) { ?>
-                    <input type="submit" name="tretiaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 3)) { ?> style="background-color: #ffc107" <?php } ?> value="3">
+                    <input type="submit" name="tretiaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 3)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="3">
                 <?php } ?>
 
                 <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 4)) { ?>
-                    <input type="submit" name="stvrtaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 4)) { ?> style="background-color: #ffc107" <?php } ?> value="4">
+                    <input type="submit" name="stvrtaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 4)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="4">
                 <?php } ?>
 
                 <?php if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, 5)) { ?>
-                    <input type="submit" name="piataStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 5)) { ?> style="background-color: #ffc107" <?php } ?> value="5">
+                    <input type="submit" name="piataStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 5)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="5">
                 <?php } ?>
 
+                <!--
                 <?php if ($productShowingManager->showNextButton($currentPage, $pocetProduktov)) { ?>
                     <input type="submit" name="krokDalej" value="→">
                 <?php } ?>
+                -->
 
 
             </form>
