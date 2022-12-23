@@ -72,6 +72,11 @@ $_SESSION['logged'] = 1;
                 </form>
         </div>
 
+        <?php
+        include_once "sideCategories.php";
+
+        ?>
+
 
     </section>
 

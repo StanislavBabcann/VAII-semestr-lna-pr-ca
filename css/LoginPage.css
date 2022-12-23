@@ -10,10 +10,10 @@
     background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../images/uvodny.png);
     background-position: center;
     background-size: cover;
-    position: relative;
+    position: absolute;
 }
 
-.loginbox{
+.registrationBox{
     border-radius: 30px;
     width: 320px;
     height: 360px;
@@ -37,21 +37,21 @@ h1{
 
 }
 
-.loginbox p{
+.registrationBox p{
     margin: 0;
     padding: 0;
     font-weight: bold;
 
 }
 
-.loginbox input{
+.registrationBox input{
     width: 100%;
     margin-bottom: 4px;
 }
 
 
 
-.loginbox input[type="text"], input[type="password"]
+.registrationBox input[type="text"], input[type="password"]
 {
     border: 1px solid #fff;
     background: transparent;
@@ -62,7 +62,7 @@ h1{
 
 }
 
-.loginbox input[type="submit"]
+.registrationBox input[type="submit"]
 {
     border: none;
     outline: none;
@@ -73,7 +73,7 @@ h1{
     border-radius: 20px;
 }
 
-.loginbox input[type="submit"]:hover
+.registrationBox input[type="submit"]:hover
 {
     cursor: pointer;
     background: #ffc107;
@@ -81,14 +81,14 @@ h1{
 
 }
 
-.loginbox a{
+.registrationBox a{
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
     color: darkgrey;;
 }
 
-.loginbox a:hover
+.registrationBox a:hover
 {
     color: #ffc107;
 }

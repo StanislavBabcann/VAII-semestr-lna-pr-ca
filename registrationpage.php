@@ -88,7 +88,7 @@ $db = new Database();
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="css/RegistrationPage.css">
+    <link rel="stylesheet" href="css/MainPage.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
 
@@ -110,7 +110,7 @@ $db = new Database();
 
         ?>
 
-        <div class = "loginbox">
+        <div class = "registrationBox">
 
 
 
@@ -145,6 +145,13 @@ $db = new Database();
 
 
         </div>
+
+        <?php
+        include_once "sideCategories.php";
+
+        ?>
+
+
 
 
     </section>

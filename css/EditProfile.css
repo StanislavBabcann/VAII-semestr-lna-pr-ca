@@ -13,7 +13,7 @@
     position: relative;
 }
 
-.loginbox{
+.editProfileBox{
     border-radius: 30px;
     width: 320px;
     height: 600px;
@@ -29,7 +29,7 @@
 
 
 
-h1{
+.editProfileBox h1{
     margin: 0;
     padding: 0 0 20px;
     text-align: center;
@@ -37,7 +37,7 @@ h1{
 
 }
 
-.loginbox p{
+.editProfileBox p{
     margin: 0;
     padding: 0;
     margin-bottom: 0.5vw;
@@ -45,12 +45,12 @@ h1{
 
 }
 
-.loginbox input{
+.editProfileBox input{
     width: 100%;
     margin-bottom: 2px;
 }
 
-.loginbox input[type="text"], input[type="password"]
+.editProfileBox input[type="text"], input[type="password"]
 {
     border: 1px solid #fff;
     background: transparent;
@@ -61,7 +61,7 @@ h1{
 
 }
 
-.loginbox input[type="submit"]
+.editProfileBox input[type="submit"]
 {
     border: none;
     outline: none;
@@ -72,7 +72,7 @@ h1{
     border-radius: 20px;
 }
 
-.loginbox input[type="submit"]:hover
+.editProfileBox input[type="submit"]:hover
 {
     cursor: pointer;
     background: #ffc107;
@@ -80,14 +80,14 @@ h1{
 
 }
 
-.loginbox a{
+.editProfileBox a{
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
     color: darkgrey;;
 }
 
-.loginbox a:hover
+.editProfileBox a:hover
 {
     color: #ffc107;
 }

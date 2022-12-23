@@ -23,13 +23,20 @@ $pocetProduktov = sizeof($produkty);
 
 $helpIndexForPrintingProducts = ($currentPage - 1) * 10;
 
+$arrayForPrintingNumbers = array();
+
+
+for ($i = 0; $i < 10; $i++) {
+    $arrayForPrintingNumbers[$i] = $helpIndexForPrintingProducts + $i;
+
+}
+
+
+
+
+
 
 $stranky = array('prvaStranka', 'druhaStranka', 'tretiaStranka', 'stvrtaStranka','piataStranka');
-
-echo $currentPage;
-
-
-
 
 
 for ($i = 0; $i < 5; $i++) {
@@ -42,27 +49,27 @@ for ($i = 0; $i < 5; $i++) {
     }
 }
 
-$clicked = false;
+echo $helpIndexForPrintingProducts;
 
-/*
-if (isset($_GET['krokSpat'])) {
+if(isset($_GET['currentProduct'])) {
+    $chosenProduct = $_GET['currentProduct'];
 
-    $_SESSION['currentPageNumber'] = $currentPage - 1;
-    header("location: ProductsLayout.php");
-    die();
 
+
+    if ($chosenProduct == '0') {
+
+        $_SESSION['curr'] = $currentPage * 5;
+
+
+    } else if ($chosenProduct == '1') {
+
+        $_SESSION['curr'] = $helpIndexForPrintingProducts + 1;
+
+    }
+
+    header("location: ProductViewLayout.php");
+    die;
 }
-
-if (isset($_GET['krokDalej'])) {
-    $_SESSION['currentPageNumber'] = $currentPage + 1;
-    header("location: ProductsLayout.php");
-    die();
-
-}
-*/
-
-
-
 
 
 ?>
@@ -112,17 +119,18 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[0] , $pocetProduktov)) {?>
 
-                            <a href="">
-                     <img src=<?php  echo $produkty[$helpIndexForPrintingProducts]["cestaKObrazku"]?> alt=""  >
+                            <a href="?currentProduct=0" >
+                     <img src=<?php  echo $produkty[$arrayForPrintingNumbers[0]]["cestaKObrazku"]?> alt=""  >
+
 
 
                         <div class="best-products-effect" >
-                    <h1> <?php echo $produkty[$helpIndexForPrintingProducts]["nazovProduktu"]?> </h1>
+                    <h1> <?php echo $produkty[$arrayForPrintingNumbers[0]]["nazovProduktu"]?> </h1>
                         </div>
                             </a>
-                    <p> <?php echo $produkty[$helpIndexForPrintingProducts]["cena"]?> </p>
+                    <p> <?php echo $produkty[$arrayForPrintingNumbers[0]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -131,16 +139,17 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 1 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[1] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 1]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=1">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[1]]["cestaKObrazku"]?> alt=""  >
+
 
                     <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[1]]["nazovProduktu"]?> </h1>
                     </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 1]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[1]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -149,17 +158,17 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 2 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[2] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 2]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=2">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[2]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                            <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["nazovProduktu"]?> </h1>
+                            <h1> <?php echo $produkty[$arrayForPrintingNumbers[2]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
 
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 2]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[2]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -168,16 +177,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 3 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[3] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 3]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=3">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[3]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[3]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 3]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[3]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -186,16 +195,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 4 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[4] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 4]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=4">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[4]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[4]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 4]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[4]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -216,16 +225,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 5 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[5] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 5]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=5">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[5]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[5]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 5]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[5]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -234,16 +243,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 6 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[6] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 6]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=6">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[6]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[6]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 6]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[6]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -252,16 +261,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 7 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[7] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 7]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=7">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[7]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[7]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 7]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[7]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -270,16 +279,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 8 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[8] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 8]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=8">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[8]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[8]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 8]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[8]]["cena"]?> </p>
                     <?php } ?>
 
 
@@ -288,16 +297,16 @@ if (isset($_GET['krokDalej'])) {
                 <div class="best-products-column-image">
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($helpIndexForPrintingProducts + 9 , $pocetProduktov)) {?>
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[9] , $pocetProduktov)) {?>
 
-                    <a href="">
-                        <img src=<?php  echo $produkty[$helpIndexForPrintingProducts + 9]["cestaKObrazku"]?> alt=""  >
+                    <a href="?currentProduct=9">
+                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[9]]["cestaKObrazku"]?> alt=""  >
 
                         <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["nazovProduktu"]?> </h1>
+                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[9]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$helpIndexForPrintingProducts + 9]["cena"]?> </p>
+                        <p> <?php echo $produkty[$arrayForPrintingNumbers[9]]["cena"]?> </p>
                     <?php } ?>
 
 

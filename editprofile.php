@@ -77,7 +77,7 @@ if (isset($_GET['potvrdit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit profile</title>
-    <link rel="stylesheet" href="css/EditProfile.css">
+    <link rel="stylesheet" href="css/MainPage.css">
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
 
     <script src="javascripts.js" , language="JavaScript" type="text/javascript">
@@ -95,7 +95,7 @@ if (isset($_GET['potvrdit'])) {
 
     ?>
 
-    <div class = "loginbox">
+    <div class = "editProfileBox">
 
         <h1>Edit profile</h1>
         <form name="editProfileForm" >
@@ -119,6 +119,11 @@ if (isset($_GET['potvrdit'])) {
 
 
     </div>
+
+    <?php
+    include_once "sideCategories.php";
+
+    ?>
 
 
 </section>
