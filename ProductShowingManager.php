@@ -2,13 +2,20 @@
 
 class ProductShowingManager
 {
+    private $lastProduct;
+
     public function __construct()
     {
 
     }
 
+    public function getLastProductOfPage() {
+        return $this->lastProduct;
+    }
+
     public function shouldShowNextProduct($numberOfItemOnPage, $numberOfProducts) {
         if ( $numberOfItemOnPage < $numberOfProducts) {
+            $this->lastProduct = $numberOfItemOnPage;
             return true;
         } else {
             return false;

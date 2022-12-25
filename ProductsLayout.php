@@ -3,12 +3,12 @@ include "LogginManager.php";
 include "Database.php";
 include "ProductForShowingOnPage.php";
 include "ProductShowingManager.php";
+
+ob_start();
+
 $loginManager = new LogginManager();
 
-if(!isset($_SESSION))
-{
-    session_start();
-}
+session_start();
 
 $db = new Database();
 $productShowingManager = new ProductShowingManager();
@@ -17,11 +17,17 @@ $productShowingManager = new ProductShowingManager();
 $chosenCategory = $_SESSION['choosenCategorySES'];
 
 $produkty = $db->dajProduktyPodKategorie($chosenCategory);
-$currentPage = $_SESSION['currentPageNumber'];
+if (isset($_SESSION['currentPageNumber'])) {
+    $currentPage = $_SESSION['currentPageNumber'];
+}
 
 $pocetProduktov = sizeof($produkty);
 
 $helpIndexForPrintingProducts = ($currentPage - 1) * 10;
+
+$numberOfFirst = $helpIndexForPrintingProducts + 1;
+
+
 
 $arrayForPrintingNumbers = array();
 
@@ -30,6 +36,7 @@ for ($i = 0; $i < 10; $i++) {
     $arrayForPrintingNumbers[$i] = $helpIndexForPrintingProducts + $i;
 
 }
+
 
 
 
@@ -49,27 +56,38 @@ for ($i = 0; $i < 5; $i++) {
     }
 }
 
-echo $helpIndexForPrintingProducts;
+if(isset($_GET['tlacidloSpat'])) {
+    $_SESSION['currentPageNumber']--;
+    header("location: ProductsLayout.php");
+    die();
 
+}
+
+if(isset($_GET['tlacidloDalej'])) {
+    $_SESSION['currentPageNumber']++;
+    header("location: ProductsLayout.php");
+    die();
+
+}
 if(isset($_GET['currentProduct'])) {
     $chosenProduct = $_GET['currentProduct'];
 
 
+    for ($i = 0; $i < 9; $i++) {
+        if ($chosenProduct == $i) {
 
-    if ($chosenProduct == '0') {
+            $idOfChosenProcut = $produkty[$arrayForPrintingNumbers[$i]]["idProduktu"];
+            $_SESSION['currentProductId'] = $idOfChosenProcut;
 
-        $_SESSION['curr'] = $currentPage * 5;
 
-
-    } else if ($chosenProduct == '1') {
-
-        $_SESSION['curr'] = $helpIndexForPrintingProducts + 1;
-
+        }
     }
+
 
     header("location: ProductViewLayout.php");
     die;
 }
+
 
 
 ?>
@@ -84,8 +102,6 @@ if(isset($_GET['currentProduct'])) {
 
 
 </head>
-
-
 
 <body>
     <section class = "header" >
@@ -119,6 +135,7 @@ if(isset($_GET['currentProduct'])) {
                 <div class="best-products-column-image">
 
 
+
                     <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[0] , $pocetProduktov)) {?>
 
                             <a href="?currentProduct=0" >
@@ -135,6 +152,8 @@ if(isset($_GET['currentProduct'])) {
 
 
                 </div>
+
+
 
                 <div class="best-products-column-image">
 
@@ -324,11 +343,11 @@ if(isset($_GET['currentProduct'])) {
 
             <form>
 
-                <!--
+
                 <?php if ($productShowingManager->showBackButton($currentPage)) { ?>
-                    <input type="submit" name="krokSpat"  value="←">
+                    <input type="submit" name="tlacidloSpat" value="←">
                 <?php } ?>
-                -->
+
 
 
                 <input type="submit" name="prvaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 1)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="1">
@@ -349,14 +368,18 @@ if(isset($_GET['currentProduct'])) {
                     <input type="submit" name="piataStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 5)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value="5">
                 <?php } ?>
 
-                <!--
                 <?php if ($productShowingManager->showNextButton($currentPage, $pocetProduktov)) { ?>
-                    <input type="submit" name="krokDalej" value="→">
+                    <input type="submit" name="tlacidloDalej" value="→">
                 <?php } ?>
-                -->
 
 
             </form>
+
+
+        </div>
+
+        <div class = "infoAboutHowManyProducts" >
+            <h1>Showing <?php echo $numberOfFirst?> to <?php echo $productShowingManager->getLastProductOfPage() + 1?> of <?php echo $pocetProduktov?> items</h1>
 
 
         </div>

@@ -9,9 +9,11 @@ session_start();
 
 $loginManager = new LogginManager();
 
-$aktualneId = $_SESSION['curr'];
+$aktualneIdProduktu = $_SESSION['currentProductId'];
 
-echo $aktualneId;
+
+
+echo $aktualneIdProduktu;
 
 ?>
 

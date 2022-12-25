@@ -1,9 +1,40 @@
 <?php
 
+ob_start();
+
 define("chosenCategoryConst", 'choosenCategorySES');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_GET['kategoria'])) {
+    $_SESSION['currentPageNumber'] = 1;
+    $kategoria = $_GET['kategoria'];
 
 
+    if ($kategoria == "wheyProtein") {
+        $_SESSION['choosenCategorySES'] = "Whey protein";
+
+
+    } else if ($kategoria == "nightProtein") {
+        $_SESSION['choosenCategorySES'] = "Night protein";
+
+    } else if ($kategoria == "blendProtein") {
+        $_SESSION['choosenCategorySES'] = "Protein blends";
+    }
+
+    header("location: ProductsLayout.php");
+    exit();
+
+
+
+
+    die();
+
+
+}
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
@@ -97,9 +128,9 @@ define("chosenCategoryConst", 'choosenCategorySES');
 
             <button onclick="myFunction()" id = "prvy" class="dropbtn">Proteins</button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="ProductsLayout.php">Whey Protein <?php $_SESSION['choosenCategorySES'] = "Whey protein"; $_SESSION['currentPageNumber'] = 1; $_SESSION['nextPage'] = 0;?></a>
-                <a href="#about"> Protein Blends</a>
-                <a href="#contact">Night Protein</a>
+                <a href="?kategoria=wheyProtein">Whey Protein </a>
+                <a href="?kategoria=blendProtein"> Protein Blends </a>
+                <a href="?kategoria=nightProtein">Night Protein </a>
                 <a href="#contact">Plant-Based Protein</a>
                 <a href="#contact">Beef Protein</a>
                 <a href="#contact">Soy Protein</a>

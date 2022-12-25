@@ -322,6 +322,17 @@ h1{
     color:#000;
 }
 
+.infoAboutHowManyProducts {
+    position: absolute;
+    margin-left: 80vw;
+    margin-top: 37vw;
+}
+
+.infoAboutHowManyProducts h1{
+    color: white;
+    font-size: 1vw;
+}
+
 .best-products-effect{
     background: transparent;
     height: 13.6vw;
@@ -611,7 +622,7 @@ h1{
     border-radius: 30px;
     width: 320px;
     height: 600px;
-    background: #000;
+    background: limegreen;
     color: #fff;
     top: 50%;
     left: 50%;
