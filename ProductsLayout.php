@@ -1,7 +1,6 @@
 <?php
 include "LogginManager.php";
 include "Database.php";
-include "ProductForShowingOnPage.php";
 include "ProductShowingManager.php";
 
 ob_start();
@@ -15,8 +14,21 @@ $productShowingManager = new ProductShowingManager();
 
 
 $chosenCategory = $_SESSION['choosenCategorySES'];
+$wayOfFiltering = $_SESSION['filterBy'];
 
-$produkty = $db->dajProduktyPodKategorie($chosenCategory);
+$produkty = null;
+
+if ($wayOfFiltering == "hlavna") {
+    $produkty = $db->dajProduktyHlavnejKategorie($chosenCategory);
+} else if ($wayOfFiltering == "pod") {
+    $produkty = $db->dajProduktyPodKategorie($chosenCategory);
+} else {
+    $produkty = $db->dajProduktyPodlaVyrobcu($chosenCategory);
+}
+
+
+
+
 if (isset($_SESSION['currentPageNumber'])) {
     $currentPage = $_SESSION['currentPageNumber'];
 }
@@ -73,7 +85,7 @@ if(isset($_GET['currentProduct'])) {
     $chosenProduct = $_GET['currentProduct'];
 
 
-    for ($i = 0; $i < 9; $i++) {
+    for ($i = 0; $i < 10; $i++) {
         if ($chosenProduct == $i) {
 
             $idOfChosenProcut = $produkty[$arrayForPrintingNumbers[$i]]["idProduktu"];

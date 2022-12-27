@@ -73,11 +73,31 @@ class Database
         $stmt->execute();
     }
 
+    public function dajProduktyHlavnejKategorie($hlavnaKategoria) {
+
+
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE hlavnaKategoria = ? && pocetKusov != 0");
+        $sql->execute([$hlavnaKategoria]);
+        return $sql->fetchAll();
+    }
+
     public function dajProduktyPodKategorie($podKategoria) {
 
 
         $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE podKategoria = ? && pocetKusov != 0");
         $sql->execute([$podKategoria]);
+        return $sql->fetchAll();
+    }
+
+    public function dajInfoOProdukte($idProduktu) {
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE idProduktu = ?");
+        $sql->execute([$idProduktu]);
+        return $sql->fetchAll()[0];
+    }
+
+    public function dajProduktyPodlaVyrobcu($vyrobca) {
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE vyrobca = ? && pocetKusov != 0");
+        $sql->execute([$vyrobca]);
         return $sql->fetchAll();
     }
 

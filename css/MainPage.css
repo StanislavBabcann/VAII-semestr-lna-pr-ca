@@ -776,6 +776,270 @@ h1{
     color: #ffc107;
 }
 
+.productShowingLayout {
+    position: absolute;
+    margin-left: 25vw;
+    margin-top: -2vw;
+    width: 70vw;
+    height: 20vw;
+}
+
+.productShowingLayout img {
+    width: 16vw;
+
+}
+
+.productShowingLayout h1 {
+    color: #FFEA00;
+    margin-left: 17vw;
+    margin-top: -18vw;
+    position: relative;
+    font-size: 2vw;
+}
+
+.productShowingLayout h2 {
+    color: orange;
+    margin-left: 46vw;
+    margin-top: 7.5vw;
+    position: absolute;
+    font-size: 3vw;
+}
+
+.productShowingLayout input {
+
+    position: absolute;
+
+
+    color: #fff;
+    font-size: 1.1vw;
+
+}
+
+.productShowingLayout input[type="submit"] {
+    width: 5vw;
+    height: 4vw;
+    margin-left: 50vw;
+    margin-top: 11vw;
+    background: limegreen;
+}
+
+.productShowingLayout input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color:#000;
+
+}
+
+.productShowingLayout input[type="number"] {
+    width: 3vw;
+    height: 4vw;
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 2vw;
+    margin-left: 46vw;
+    margin-top:11vw;
+    border: black;
+}
+
+.selectBox select {
+    width: 9vw;
+    height: 2vw;
+    text-align: right;
+    font-size: 1vw;
+}
+.selectBox .selectPackBox {
+    position: absolute;
+    margin-left: 46vw;
+    margin-top: 5vw;
+}
+
+.selectBox .selectFlavourBox {
+    position: absolute;
+    margin-left: 46vw;
+    margin-top: 2vw;
+}
+
+
+.productShowingLayout h3 {
+    position: absolute;
+    font-size: 1vw;
+    color: white;
+    margin-left: 17vw;
+    margin-top: 13vw;
+}
+
+.productShowingLayout a {
+    position: absolute;
+    margin-top: 13vw;
+    margin-left: 24vw;
+    color: limegreen;
+    font-size: 1vw;
+    text-decoration: none;
+}
+
+.productShowingLayout a:hover {
+    text-decoration: underline;
+}
+
+.navBeforeCategories {
+    position: absolute;
+    margin-left: 25vw;
+    margin-top: -5vw;
+}
+
+.navBeforeCategories p {
+    color: white;
+    position: relative;
+    display: inline-block;
+    font-size: 1vw;
+}
+
+.navBeforeCategories a {
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1vw;
+    text-decoration: none;
+}
+
+.navBeforeCategories a:hover {
+    color: limegreen;
+}
+
+.productDescription {
+    position: relative;
+    margin-top: 18vw;
+    margin-left: 25vw;
+    width: 57vw;
+
+}
+
+.productDescription h1 {
+    font-size: 1.5vw;
+    color:limegreen;
+    width: 57vw;
+    text-align: left;
+}
+
+.productDescription p {
+    margin-top: 0.25vw;
+    text-align: left;
+    color: white;
+    font-size: 1vw;
+}
+
+.keyBenefits {
+    margin-top: 1vw;
+    position: relative;
+    margin-left: 25vw;
+    width: 57vw;
+}
+
+.keyBenefits h1 {
+    font-size: 1.5vw;
+    color:limegreen;
+    width: 57vw;
+    text-align: left;
+}
+
+.keyBenefits p {
+    margin-top: 0.5vw;
+    text-align: left;
+    color: white;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.dosage {
+    margin-top: 1vw;
+    position: relative;
+    margin-left: 25vw;
+    width: 57vw;
+}
+
+.dosage h1 {
+    font-size: 1.5vw;
+    color:limegreen;
+    width: 57vw;
+    text-align: left;
+}
+
+.dosage p {
+    margin-top: 0.25vw;
+    text-align: left;
+    color: white;
+    font-size: 1vw;
+}
+
+.nutricneHodnoty {
+    margin-top: 1vw;
+    position: relative;
+    margin-left: 25vw;
+    width: 57vw;
+}
+
+.nutricneHodnoty h1 {
+    font-size: 1.5vw;
+    color:limegreen;
+    width: 57vw;
+    text-align: left;
+}
+
+.nutricneHodnoty table {
+    border-collapse: collapse;
+    border: 1px solid black;
+
+}
+
+.nutricneHodnoty table.tabulkaNutricnychHodnot {
+    margin-top: 0.5vw;
+    table-layout: fixed;
+    width: 100%;
+
+}
+
+th,td {
+    border: 1px solid white;
+    color: white;
+    font-size: 1vw;
+    height: 2vw;
+}
+
+.zlozenie {
+    margin-top: 1vw;
+    position: relative;
+    margin-left: 25vw;
+    width: 57vw;
+}
+
+.zlozenie h1 {
+    font-size: 1.5vw;
+    color:limegreen;
+    width: 57vw;
+    text-align: left;
+}
+
+.zlozenie p {
+    margin-top: 0.25vw;
+    text-align: left;
+    color: white;
+    font-size: 1vw;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

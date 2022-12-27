@@ -7,7 +7,6 @@
 .text-box{
     position: absolute;
     margin-top: -2vw;
-    margin-left: 0vw;
     transform: translate(-50%, -50%);
     text-align: left;
     flex-direction: column;
@@ -21,13 +20,7 @@
 
 }
 
-h1{
-    font-size: 16px;
-    color: white;
-}
-
 .dropbtn {
-    font-family: "Georgia", "Courier New", monospace;
     font-weight: bold;
     margin-left: 0.5vw;
     border-radius: 15px;
@@ -37,8 +30,8 @@ h1{
     width: 16vw;
     height: 4vw;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 1vw;
+    font-size: 1vw;
     border: none;
     cursor: pointer;
 }
@@ -70,14 +63,12 @@ h1{
 }
 
 .dropdown-content a {
-    margin-top: 0px;
-    font-size: 18px;
+    font-size: 1vw;
     color: white;
     border: 1px solid black;
-    padding: 12px 16px;
+    padding: 0.8vw 1.1vw;
     text-decoration: none;
     display: block;
-    font-family: "Georgia", "Courier New", monospace;
     font-weight: bold;
 
 }

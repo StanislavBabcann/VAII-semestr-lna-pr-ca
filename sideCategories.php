@@ -11,7 +11,7 @@ if (!isset($_SESSION)) {
 if (isset($_GET['kategoria'])) {
     $_SESSION['currentPageNumber'] = 1;
     $kategoria = $_GET['kategoria'];
-
+    $_SESSION['filterBy'] = "pod";
 
     if ($kategoria == "wheyProtein") {
         $_SESSION['choosenCategorySES'] = "Whey protein";
@@ -126,26 +126,25 @@ ob_end_flush();
     <div class="dropdown">
 
 
-            <button onclick="myFunction()" id = "prvy" class="dropbtn">Proteins</button>
+            <button onclick="myFunction()" id = "prvy" class="dropbtn">PROTEINS</button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="?kategoria=wheyProtein">Whey Protein </a>
-                <a href="?kategoria=blendProtein"> Protein Blends </a>
-                <a href="?kategoria=nightProtein">Night Protein </a>
-                <a href="#contact">Plant-Based Protein</a>
-                <a href="#contact">Beef Protein</a>
-                <a href="#contact">Soy Protein</a>
+                <a href="?kategoria=wheyProtein">ALL</a>
+                <a href="?kategoria=blendProtein">WHEY</a>
+                <a href="?kategoria=nightProtein">CASEIN</a>
+                <a href="#contact">BLENDS</a>
+                <a href="#contact">VEGAN</a>
+                <a href="#contact">OTHER(BEEF, EGG...)</a>
             </div>
     </div>
 
     <div class="dropdown">
 
 
-        <button onclick="myFunction2()" id = "druhy" class="dropbtn">Weight Gainers</button>
+        <button onclick="myFunction2()" id = "druhy" class="dropbtn">WEIGHT GAINERS</button>
         <div id="myDropdown2" class="dropdown-content">
-            <a href="#home">Gainers</a>
-            <a href="#about">Slow Release Carbs</a>
-            <a href="#contact">Fast Release Carbs</a>
-            <a href="#contact">All-in-One</a>
+            <a href="#home">All</a>
+            <a href="#about">GAINERS</a>
+            <a href="#contact">SACHARIDS</a>
         </div>
 
 
@@ -154,10 +153,10 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction3()" class="dropbtn">Amino acids</button>
+        <button onclick="myFunction3()" class="dropbtn">CREATINE</button>
         <div id="myDropdown3" class="dropdown-content">
-            <a href="#home">Complex Amino Acids</a>
-            <a href="#about">BCAAs</a>
+            <a href="#home">MONOHYDRATE</a>
+            <a href="#about">MULTI-COMPONENT</a>
             <a href="#contact">EAA</a>
             <a href="#contact">Arginine</a>
             <a href="#contact">Glutamine</a>
