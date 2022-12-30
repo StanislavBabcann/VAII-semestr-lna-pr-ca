@@ -32,6 +32,12 @@ if (isset($_GET['odhlasSaBtn'])) {
     header("location: index.php");
     die;
 }
+
+if (isset($_GET['chodDoKosikuBtn'])) {
+    $_SESSION['logged'] = 0;
+    header("location: NakupnyKosik.php");
+    die;
+}
 $_SESSION['logged'] = 1;
 
 ?>
@@ -60,7 +66,7 @@ $_SESSION['logged'] = 1;
         <div class="starterBox">
                 <h1>Customer account</h1>
                 <form>
-                    <input type="submit" name="#" value="View basket">
+                    <input type="submit" name="chodDoKosikuBtn" value="View basket">
 
                     <input type="submit" name="upravProfilBtn" value="Edit profile">
 

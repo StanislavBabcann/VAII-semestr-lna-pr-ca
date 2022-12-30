@@ -59,14 +59,14 @@ nav img{
 }
 
 .nav-logo ul li a {
-    color: #fff;
+    color: limegreen;
     text-decoration: none;
     font-size: 4vw;
     font-family: "Brush Script MT";
 }
 
 .nav-logo ul li a:hover{
-    color: limegreen;
+    color: yellow;
     transition: 0.75s;
 
 

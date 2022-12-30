@@ -12,7 +12,7 @@
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
-    background-color: midnightblue;
+
     border-radius: 25px;
     height: 41vw;
     width: 17vw;
@@ -26,10 +26,10 @@
     border-radius: 15px;
     text-align: center;
     position: relative;
-    background-color: royalblue;
+    background-color: white;
     width: 16vw;
     height: 4vw;
-    color: white;
+    color: black;
     padding: 1vw;
     font-size: 1vw;
     border: none;
@@ -38,6 +38,7 @@
 
 .dropbtn:hover, .dropbtn:focus {
     background-color: limegreen;
+    color: black;
 }
 
 .dropdown {
@@ -50,7 +51,7 @@
     border-radius: 15px;
     display: none;
     position: absolute;
-    background-color: mediumslateblue;
+    background-color: white;
     min-width: 18vw;
     text-align: center;
     margin-left:  16.75vw;
@@ -63,13 +64,14 @@
 }
 
 .dropdown-content a {
+    margin-top: -0.1vw;
     font-size: 1vw;
-    color: white;
+    color: black;
     border: 1px solid black;
     padding: 0.8vw 1.1vw;
     text-decoration: none;
     display: block;
-    font-weight: bold;
+    font-weight: bolder;
 
 }
 

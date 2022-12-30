@@ -8,32 +8,30 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_GET['kategoria'])) {
+if (isset($_GET['hlavnaKategoria'])) {
     $_SESSION['currentPageNumber'] = 1;
-    $kategoria = $_GET['kategoria'];
-    $_SESSION['filterBy'] = "pod";
-
-    if ($kategoria == "wheyProtein") {
-        $_SESSION['choosenCategorySES'] = "Whey protein";
-
-
-    } else if ($kategoria == "nightProtein") {
-        $_SESSION['choosenCategorySES'] = "Night protein";
-
-    } else if ($kategoria == "blendProtein") {
-        $_SESSION['choosenCategorySES'] = "Protein blends";
-    }
+    $kategoria = $_GET['hlavnaKategoria'];
+    $_SESSION['filterBy'] = "hlavna";
+    $_SESSION['choosenCategorySES'] = $kategoria;
 
     header("location: ProductsLayout.php");
-    exit();
-
-
-
-
     die();
 
+}
+
+if (isset($_GET['podKategoria'])) {
+    $_SESSION['currentPageNumber'] = 1;
+    $kategoria = $_GET['podKategoria'];
+    $_SESSION['filterBy'] = "pod";
+    $_SESSION['choosenCategorySES'] = $kategoria;
+
+    header("location: ProductsLayout.php");
+    die();
 
 }
+
+
+
 ob_end_flush();
 ?>
 
@@ -52,51 +50,16 @@ ob_end_flush();
 
 <script>
 
-    function myFunction() {
+    const ids = ["myDropdown", "myDropdown2","myDropdown3","myDropdown4","myDropdown5","myDropdown6",
+        "myDropdown7","myDropdown8","myDropdown9"];
+
+    function myFunction(number) {
         deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown").classList.toggle("show");
+        document.getElementById(ids[number]).classList.toggle("show");
 
     }
 
-    function myFunction2() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown2").classList.toggle("show");
-    }
 
-    function myFunction3() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown3").classList.toggle("show");
-    }
-
-    function myFunction4() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown4").classList.toggle("show");
-    }
-
-    function myFunction5() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown5").classList.toggle("show");
-    }
-
-    function myFunction6() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown6").classList.toggle("show");
-    }
-
-    function myFunction7() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown7").classList.toggle("show");
-    }
-
-    function myFunction8() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown8").classList.toggle("show");
-    }
-
-    function myFunction9() {
-        deleteBeforeOpenedMenu();
-        document.getElementById("myDropdown9").classList.toggle("show");
-    }
 
     function deleteBeforeOpenedMenu() {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -126,25 +89,25 @@ ob_end_flush();
     <div class="dropdown">
 
 
-            <button onclick="myFunction()" id = "prvy" class="dropbtn">PROTEINS</button>
+            <button onclick="myFunction(0)" id = "prvy" class="dropbtn">PROTEINS</button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="?kategoria=wheyProtein">ALL</a>
-                <a href="?kategoria=blendProtein">WHEY</a>
-                <a href="?kategoria=nightProtein">CASEIN</a>
-                <a href="#contact">BLENDS</a>
-                <a href="#contact">VEGAN</a>
-                <a href="#contact">OTHER(BEEF, EGG...)</a>
+                <a href="?hlavnaKategoria=Protein powder">ALL</a>
+                <a href="?podKategoria=Whey">WHEY</a>
+                <a href="?podKategoria=Casein">CASEIN</a>
+                <a href="?podKategoria=Blends">BLENDS</a>
+                <a href="?podKategoria=Vegan">VEGAN</a>
+                <a href="?podKategoria=Other protein">OTHER(BEEF, EGG...)</a>
             </div>
     </div>
 
     <div class="dropdown">
 
 
-        <button onclick="myFunction2()" id = "druhy" class="dropbtn">WEIGHT GAINERS</button>
+        <button onclick="myFunction(1)" id = "druhy" class="dropbtn">WEIGHT GAINERS</button>
         <div id="myDropdown2" class="dropdown-content">
-            <a href="#home">All</a>
-            <a href="#about">GAINERS</a>
-            <a href="#contact">SACHARIDS</a>
+            <a href="?hlavnaKategoria=Gainers">All</a>
+            <a href="?podKategoria=Gainers">GAINERS</a>
+            <a href="?podKategoria=Sacharidcs">SACHARIDS</a>
         </div>
 
 
@@ -153,13 +116,12 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction3()" class="dropbtn">CREATINE</button>
+        <button onclick="myFunction(2)" class="dropbtn">CREATINE</button>
         <div id="myDropdown3" class="dropdown-content">
-            <a href="#home">MONOHYDRATE</a>
-            <a href="#about">MULTI-COMPONENT</a>
-            <a href="#contact">EAA</a>
-            <a href="#contact">Arginine</a>
-            <a href="#contact">Glutamine</a>
+            <a href="?hlavnaKategoria=Creatine">ALL</a>
+            <a href="?podKategoria=Monohydrate">MONOHYDRATE</a>
+            <a href="?podKategoria=Multi-component">MULTI-COMPONENT</a>
+            <a href="?podKategoria=Other creatine">OTHER</a>
         </div>
 
 
@@ -168,12 +130,14 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction4()" class="dropbtn">Creatine</button>
+        <button onclick="myFunction(3)" class="dropbtn">AMINO ACIDS</button>
         <div id="myDropdown4" class="dropdown-content">
-            <a href="#home">Creatine Monohydrate</a>
-            <a href="#about">Creatine-Other Forms</a>
-            <a href="#about">HCL</a>
-            <a href="#contact">Multi Component Creatine</a>
+            <a href="?hlavnaKategoria=Amino acids">ALL</a>
+            <a href="?podKategoria=BCAA">BCAA</a>
+            <a href="?podKategoria=Glutamine">GLUTAMINE</a>
+            <a href="?podKategoria=Arginine">ARGININE</a>
+            <a href="?podKategoria=Single creatine">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Multi creatine">MULTI COMPONENT</a>
         </div>
 
 
@@ -182,16 +146,11 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction5()" class="dropbtn">Vitamins</button>
+        <button onclick="myFunction(4)" class="dropbtn">PRE-WORKOUT PUMPS</button>
         <div id="myDropdown5" class="dropdown-content">
-            <a href="#home">Multivitamin</a>
-            <a href="#about">Vitamin A</a>
-            <a href="#about">B Vitamins</a>
-            <a href="#about">Vitamin C</a>
-            <a href="#about">Vitamin D</a>
-            <a href="#about">Vitamin E</a>
-            <a href="#about">Other Vitamins</a>
-
+            <a href="?hlavnaKategoria=Pre-workout pumps">ALL</a>
+            <a href="?podKategoria=With stimulants">WITH STIMULANTS</a>
+            <a href="?podKategoria=Without stimulants">WITHOUT STIMULANTS</a>
         </div>
 
 
@@ -200,32 +159,12 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction9()" class="dropbtn">Minerals</button>
-        <div id="myDropdown9" class="dropdown-content">
-            <a href="#home">Multimineral Supplements</a>
-            <a href="#about">Magnesium</a>
-            <a href="#about">Calcium</a>
-            <a href="#contact">Iron</a>
-            <a href="#contact">Zinc</a>
-            <a href="#contact">ZMA & ZMB</a>
-            <a href="#contact">Other Minerals</a>
-        </div>
-
-
-    </div>
-
-    <div class="dropdown">
-
-
-        <button onclick="myFunction6()" class="dropbtn">Anabolizers & Pre-Workout Supplements</button>
+        <button onclick="myFunction(5)" class="dropbtn">FAT BURNERS</button>
         <div id="myDropdown6" class="dropdown-content">
-            <a href="#home">Pre-Workout Supplements</a>
-            <a href="#about">NO Supplements</a>
-            <a href="#contact">HMB</a>
-            <a href="#contact">Testosterone Support</a>
-            <a href="#contact">Caffeine</a>
-            <a href="#contact">Beta Alanine</a>
-            <a href="#contact">DAA</a>
+            <a href="?hlavnaKategoria=Fat burners">ALL</a>
+            <a href="?podKategoria=L-carnitine">L-CARNITINE</a>
+            <a href="?podKategoria=Single burner">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Complex burner">COMPLEX</a>
         </div>
 
 
@@ -234,12 +173,11 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction7()" class="dropbtn">Joint Supplements</button>
+        <button onclick="myFunction(6)" class="dropbtn">JOINT NUTRITION</button>
         <div id="myDropdown7" class="dropdown-content">
-            <a href="#home">Complex Joint Supplements</a>
-            <a href="#about">Collagen Joint Supplements</a>
-            <a href="#about">Glucosamine</a>
-            <a href="#contact">Other Joint Supplements</a>
+            <a href="?hlavnaKategoria=Joint nutrition">ALL</a>
+            <a href="?podKategoria=Single joint">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Multi joint">MULTI COMPONENT</a>
         </div>
 
 
@@ -248,12 +186,25 @@ ob_end_flush();
     <div class="dropdown">
 
 
-        <button onclick="myFunction8()" class="dropbtn">Fat Burners</button>
+        <button onclick="myFunction(7)" class="dropbtn">VITAMINS & MINERALS</button>
         <div id="myDropdown8" class="dropdown-content">
-            <a href="#home">Complex Fat Burners</a>
-            <a href="#about">L-Carnitine</a>
-            <a href="#contact">Thermogenic Fat Burners</a>
-            <a href="#contact">Other Fat Burners</a>
+            <a href="?hlavnaKategoria=VITAMINS & MINERALS">ALL</a>
+            <a href="?podKategoria=Single vitamin">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Multi vitamin">COMPLEX</a>
+            <a href="?podKategoria=Omega">OMEGA FATTY ACIDS</a>
+        </div>
+
+
+    </div>
+
+    <div class="dropdown">
+
+
+        <button onclick="myFunction(8)" class="dropbtn">CLOTHES</button>
+        <div id="myDropdown9" class="dropdown-content">
+            <a href="?hlavnaKategoria=Clothes">ALL</a>
+            <a href="?podKategoria=t-shirt">T-SHIRT</a>
+            <a href="?podKategoria=tank top">TANK TOP</a>
         </div>
 
 

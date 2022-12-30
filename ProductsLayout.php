@@ -12,7 +12,6 @@ session_start();
 $db = new Database();
 $productShowingManager = new ProductShowingManager();
 
-
 $chosenCategory = $_SESSION['choosenCategorySES'];
 $wayOfFiltering = $_SESSION['filterBy'];
 
@@ -25,6 +24,8 @@ if ($wayOfFiltering == "hlavna") {
 } else {
     $produkty = $db->dajProduktyPodlaVyrobcu($chosenCategory);
 }
+
+
 
 
 
@@ -42,12 +43,24 @@ $numberOfFirst = $helpIndexForPrintingProducts + 1;
 
 
 $arrayForPrintingNumbers = array();
+$arrayOfPrizes = array();
+
+$cenyProduktov = array();
+
 
 
 for ($i = 0; $i < 10; $i++) {
     $arrayForPrintingNumbers[$i] = $helpIndexForPrintingProducts + $i;
 
+    if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[$i] , $pocetProduktov)) {
+        $idProduktu = $produkty[$arrayForPrintingNumbers[$i]]["idProduktu"];
+        $cenyProduktov[$i] = $db->dajNajnizsieCenyProduktov($idProduktu);
+    }
 }
+
+
+
+
 
 
 
@@ -159,7 +172,7 @@ if(isset($_GET['currentProduct'])) {
                     <h1> <?php echo $produkty[$arrayForPrintingNumbers[0]]["nazovProduktu"]?> </h1>
                         </div>
                             </a>
-                    <p> <?php echo $produkty[$arrayForPrintingNumbers[0]]["cena"]?> </p>
+                    <p> <?php echo $cenyProduktov[0]?> </p>
                     <?php } ?>
 
 
@@ -180,7 +193,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[1]]["nazovProduktu"]?> </h1>
                     </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[1]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[1]?> </p>
                     <?php } ?>
 
 
@@ -199,7 +212,7 @@ if(isset($_GET['currentProduct'])) {
                         </div>
                     </a>
 
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[2]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[2]?> </p>
                     <?php } ?>
 
 
@@ -217,7 +230,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[3]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[3]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[3]?> </p>
                     <?php } ?>
 
 
@@ -235,7 +248,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[4]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[4]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[4]?> </p>
                     <?php } ?>
 
 
@@ -265,7 +278,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[5]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[5]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[5]?> </p>
                     <?php } ?>
 
 
@@ -283,7 +296,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[6]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[6]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[6]?> </p>
                     <?php } ?>
 
 
@@ -301,7 +314,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[7]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[7]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[7]?> </p>
                     <?php } ?>
 
 
@@ -319,7 +332,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[8]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[8]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[8]?> </p>
                     <?php } ?>
 
 
@@ -337,7 +350,7 @@ if(isset($_GET['currentProduct'])) {
                         <h1> <?php echo $produkty[$arrayForPrintingNumbers[9]]["nazovProduktu"]?> </h1>
                         </div>
                     </a>
-                        <p> <?php echo $produkty[$arrayForPrintingNumbers[9]]["cena"]?> </p>
+                        <p> <?php echo $cenyProduktov[9]?> </p>
                     <?php } ?>
 
 

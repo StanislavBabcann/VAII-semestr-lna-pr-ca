@@ -25,6 +25,7 @@ $editMesto = $pouzivatel->mesto;
 $editUlica = $pouzivatel->ulica;
 $staryMail = $pouzivatel->mail;
 
+
 if (isset($_GET['potvrdit'])) {
 
     $upravenyPouzivatel = new Pouzivatel();

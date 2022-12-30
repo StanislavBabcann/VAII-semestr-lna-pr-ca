@@ -2,6 +2,10 @@
 
 include "LogginManager.php";
 include "Database.php";
+include "DostupneBalenie.php";
+include "DostupnaPrichutPreBalenie.php";
+
+include "Pouzivatel.php";
 
 ob_start();
 
@@ -14,10 +18,11 @@ $infoAboutCurrentProduct = $db->dajInfoOProdukte($aktualneIdProduktu);
 
 $nazovProduktu = $infoAboutCurrentProduct["nazovProduktu"];
 $cestaKObrazku = $infoAboutCurrentProduct["cestaKObrazku"];
-$cenaProduktu = $infoAboutCurrentProduct["cena"];
 
-$balenia = $infoAboutCurrentProduct["hmotnostiBaleni"];
-$prichute = $infoAboutCurrentProduct["prichute"];
+
+
+
+
 
 $vyrobca = $infoAboutCurrentProduct["vyrobca"];
 $podKategoria = $infoAboutCurrentProduct["podKategoria"];
@@ -27,18 +32,21 @@ $lomitko = " >> ";
 $hlavnyNadpis = $infoAboutCurrentProduct["hlavnyNadpis"];
 $popisProduktu = $infoAboutCurrentProduct["popisProduktu"];
 
-$arrayOfBalenia = explode(",", $balenia);
+$arrayOfBalenia = $db->dajDostupneBalenia($aktualneIdProduktu);
 
-$arrayOfPrichute = null;
-if (!is_null($prichute)) {
-    $arrayOfPrichute = explode(",", $prichute);
-}
+
+
+$defaultCena = $db->dajCenuProduktuPodlaBalenia($aktualneIdProduktu,$arrayOfBalenia[0]->balenie)[0];
+
+$defalutPrichute = $db->dajPrichuteProduktu($aktualneIdProduktu);
+
+
 
 $benefity = $infoAboutCurrentProduct["keyBenefits"];
 
 $arrayOfBenefity = null;
 if (!is_null($benefity)) {
-    $arrayOfBenefity = explode(";", $benefity);
+    $arrayOfBenefity = explode("\n", $benefity);
 }
 
 $recomendedDosage = $infoAboutCurrentProduct["dosage"];
@@ -46,11 +54,26 @@ $recomendedDosage = $infoAboutCurrentProduct["dosage"];
 $nutricneHodnoty = $infoAboutCurrentProduct["nutricneHodnoty"];
 
 
-$arrayNutricnych = explode(";", $nutricneHodnoty);
+$arrayNutricnych = explode("\n", $nutricneHodnoty);
 
 $zlozenieProduktu = $infoAboutCurrentProduct["zlozenie"];
 
 $loginManager = new LogginManager();
+
+
+if (!isset($_COOKIE['balenie'])) {
+    $_COOKIE["balenie"] = $arrayOfBalenia[0]->balenie;
+}
+
+if (!isset($_COOKIE['prichut'])) {
+    $_COOKIE["prichut"] = $defalutPrichute[0]->getPrichut();
+}
+
+if (!isset($_COOKIE['pocetKusov'])) {
+    $_COOKIE["pocetKusov"] = 1;
+}
+
+
 
 
 if (isset($_GET['chosenManu'])) {
@@ -75,16 +98,52 @@ if (isset($_GET['categoryFromProduct'])) {
 }
 
 
+if (isset($_GET['addToBasketButton'])) {
+    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+    $idNakupujuceho = $pouzivatel->id;
 
 
 
+    $balenie = $_COOKIE["balenie"];
 
+
+    $prichut = null;
+    if (sizeof($defalutPrichute) != 0) {
+
+        $prichut = $_COOKIE["prichut"];
+
+    }
+
+
+
+    $pocetKusov = $_COOKIE["pocetKusov"];
+    $cenaProduktu = $_COOKIE["cena"];
+
+
+    $produktKosiku = new ProduktNakupnehoKosiku();
+
+    $produktKosiku->setIdPouzivatela($idNakupujuceho);
+    $produktKosiku->setIdProduktu($aktualneIdProduktu);
+    $produktKosiku->setPocetKusov($pocetKusov);
+    $produktKosiku->setBalenie($balenie);
+    $produktKosiku->setPrichut($prichut);
+    $produktKosiku->setCena($cenaProduktu);
+
+    $db->pridajPolozkuDoProduktovNakupnehoKosika($produktKosiku);
+
+
+    setcookie("balenie", 1, time()-3600, "/");
+    setcookie("prichut", 1, time()-3600, "/");
+    setcookie("pocetKusov", 1, time()-3600, "/");
+    setcookie("cena", 1, time()-3600, "/");
+
+}
 
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="">
 <head>
     <meta name = "viewport" content ="with=device-width, initial-scale=1.0">
     <title>Supplement engineer</title>
@@ -92,11 +151,77 @@ if (isset($_GET['categoryFromProduct'])) {
     <meta charset="UTF-8">
 
 
+
 </head>
 
 
 
 <body>
+
+
+
+
+<script type="text/javascript">
+
+    function getDate() {
+        const d = new Date();
+        d.setTime(d.getTime() + (1*60*1000));
+        let expires = "expires="+ d.toUTCString();
+
+        return expires;
+
+    }
+
+    function getOption() {
+        selectElement = document.querySelector('#balenieBox');
+        output = selectElement.value;
+
+        const splitArray = output.split("|");
+
+        prize = splitArray[0];
+        weight = splitArray[1];
+
+        var obj = new XMLHttpRequest();
+
+        obj.open("GET", "home.txt", true);
+
+        obj.send();
+
+        obj.onreadystatechange = function() {
+
+            document.getElementById("cenaProduktu").innerHTML = prize + " €";
+        }
+
+
+        let expires = getDate();
+
+        document.cookie = "balenie" + "=" + weight + ";" + expires + ";path=/";
+        document.cookie = "cena" + "=" + prize + ";" + expires + ";path=/";
+    }
+
+    function setFlavour() {
+        let expires = getDate();
+
+        selectElement = document.querySelector('#prichutBox');
+        prichut = selectElement.value;
+
+        document.cookie = "prichut" + "=" + prichut + ";" + expires + ";path=/";
+    }
+
+    function setPieces() {
+        selectElement = document.querySelector('#pocetKusovBtn');
+        pocet = selectElement.value;
+
+        let expires = getDate();
+
+        document.cookie = "pocetKusov" + "=" + pocet + ";" + expires + ";path=/";
+    }
+</script>
+
+
+
+
+
 <section class = "header" >
 
     <?php
@@ -125,46 +250,69 @@ if (isset($_GET['categoryFromProduct'])) {
 
         <h1><?php echo $nazovProduktu?></h1>
 
-        <div class="selectBox">
+        <div class="selectBox" >
             <div class="selectPackBox">
-                <select name="balenie">
-                    <?php
-                        foreach ($arrayOfBalenia as $jednoBalenie) {
 
+            <form id="balenieForm" method="post">
+                <label for="balenieBox"></label>
+                <select  form = "balenieForm" name="balenieBox" id="balenieBox"  onchange="getOption()" >
+                    <?php
+
+                        for ($i = 0; $i < sizeof($arrayOfBalenia); $i++) {
                     ?>
-                    <option value="select"><?php echo $jednoBalenie ?></option>
+                    <option  value=<?php echo $db->dajCenuProduktuPodlaBalenia($aktualneIdProduktu,$arrayOfBalenia[$i]->balenie)[0]."|".$arrayOfBalenia[$i]->balenie?>><?php echo $arrayOfBalenia[$i]->balenie." g" ?></option>
                     <?php } ?>
 
 
                 </select>
+            </form>
+
+
             </div>
 
             <div class="selectFlavourBox">
-                <?php if (!is_null($arrayOfPrichute)) { ?>
-                <select name="prichut">
-                    <?php
-                    foreach ($arrayOfPrichute as $jednaPrichut) {
+                <?php if (sizeof($defalutPrichute) != 0) { ?>
 
-                    ?>
-                    <option value="select"><?php echo $jednaPrichut ?></option>
-                    <?php } ?>
+                <form id="prichutForm" method="post">
 
-                </select>
+                    <label for = "prichutBox"></label>
+                        <select form = "prichutForm" name="prichutBox" id="prichutBox" onchange="setFlavour()">
+                        <?php
+
+                            for ($i = 0; $i < sizeof($defalutPrichute); $i++) {?>
+                        <option value=<?php echo $defalutPrichute[$i]->getPrichut()?>><?php echo $defalutPrichute[$i]->getPrichut() ?></option>
+                        <?php } ?>
+                        </select>
+
+                </form>
+
+
 
                 <?php } ?>
             </div>
         </div>
 
 
-        <h2><?php echo $cenaProduktu?></h2>
+        <h2 id="cenaProduktu"><?php echo $defaultCena." €"?> </h2>
         <h3>Manufacturer:</h3>
 
         <a href="?chosenManu=1"> <?php echo $vyrobca?></a>
 
 
 
-        <input type="number" value = 1 min="1">
-        <input type="submit" value="Add to&#x00A;basket">
+
+
+        <form method="post">
+
+            <input type="number" name="pocetKusovBtn" id="pocetKusovBtn" value = 1 min="1" onchange="setPieces()">
+
+        </form>
+
+
+
+        <form>
+            <input type="submit" name="addToBasketButton" value="Add to&#x00A;basket">
+        </form>
 
 
 
@@ -180,14 +328,14 @@ if (isset($_GET['categoryFromProduct'])) {
     </div>
 
     <div class="keyBenefits">
-        <?php if (!is_null($benefity)) {?>
+
         <h1>Key benefits</h1>
             <?php foreach ($arrayOfBenefity as $benefit) { ?>
                 <p><?php echo "• ".$benefit?></p>
 
             <?php }?>
 
-        <?php }?>
+
     </div>
 
     <div class="dosage">
@@ -202,13 +350,12 @@ if (isset($_GET['categoryFromProduct'])) {
             <?php foreach ($arrayNutricnych as $riadokNutricnych) {
                 $riadok = explode("*", $riadokNutricnych);
 
-                $prvyStlpec = $riadok[0];
-                $druhyStlpec = $riadok[1];
-
             ?>
             <tr>
-                <th><?php echo $prvyStlpec?></th>
-                <th><?php echo $druhyStlpec?></th>
+                <?php foreach ($riadok as $stlpec) { ?>
+                <th><?php echo $stlpec?></th>
+
+                <?php } ?>
 
             </tr>
 

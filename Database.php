@@ -1,5 +1,6 @@
 <?php
-
+include "ProduktNakupnehoKosiku.php";
+include "PonukanyProdukt.php";
 
 class Database
 {
@@ -76,7 +77,7 @@ class Database
     public function dajProduktyHlavnejKategorie($hlavnaKategoria) {
 
 
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE hlavnaKategoria = ? && pocetKusov != 0");
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE hlavnaKategoria = ?");
         $sql->execute([$hlavnaKategoria]);
         return $sql->fetchAll();
     }
@@ -84,7 +85,7 @@ class Database
     public function dajProduktyPodKategorie($podKategoria) {
 
 
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE podKategoria = ? && pocetKusov != 0");
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE podKategoria = ?");
         $sql->execute([$podKategoria]);
         return $sql->fetchAll();
     }
@@ -96,9 +97,91 @@ class Database
     }
 
     public function dajProduktyPodlaVyrobcu($vyrobca) {
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE vyrobca = ? && pocetKusov != 0");
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE vyrobca = ?");
         $sql->execute([$vyrobca]);
         return $sql->fetchAll();
+    }
+
+    public function dajVariantyProduktov($idProduktu) {
+        $sql = $this->pdo->prepare("SELECT * FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0");
+        $sql->execute([$idProduktu]);
+
+        return $sql->fetchAll();
+    }
+
+    public function dajDostupneBalenia($idProduktu) {
+        $sql = $this->pdo->prepare("SELECT distinct balenie FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0 ORDER BY balenie");
+        $sql->execute([$idProduktu]);
+
+
+        return $sql->fetchAll(PDO::FETCH_CLASS, DostupneBalenie::class);
+    }
+
+    public function dajCenuProduktuPodlaBalenia($idProduktu, $balenie) {
+        $sql = $this->pdo->prepare("SELECT cena FROM varianty_produktov WHERE id_produktu = ? && balenie = ?");
+        $sql->execute([$idProduktu, $balenie]);
+        return $sql->fetchAll()[0];
+
+    }
+
+    public function dajPrichuteProduktu($idProduktu) {
+        $sql = $this->pdo->prepare("SELECT prichut FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0");
+        $sql->execute([$idProduktu]);
+        return $sql->fetchAll(PDO::FETCH_CLASS, DostupnaPrichutPreBalenie::class);
+    }
+
+    public function dajNajnizsieCenyProduktov($idProduktu) {
+        $sql = $this->pdo->prepare("SELECT min(cena) FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0");
+        $sql->execute([$idProduktu]);
+
+        return $sql->fetchAll()[0][0];
+    }
+
+    public function nacitajData() {
+        $filename = 'files/variantyProduktov.txt';
+
+
+        $f = fopen($filename, 'r');
+
+        if (!$f) {
+            return;
+        }
+
+        while (!feof($f)) {
+            $line = fgets($f);
+            echo $line;
+            $lineSplit = explode("*", $line);
+
+            $sql = $this->pdo->prepare("INSERT into varianty_produktov(id, id_produktu, prichut, balenie, cena, pocetKusov) values (?,?,?,?,?,?)");
+            $sql->execute([$lineSplit[0], $lineSplit[1], $lineSplit[2],$lineSplit[3], $lineSplit[4], $lineSplit[5]]);
+        }
+
+
+
+        fclose($f);
+    }
+
+    public function pridajPolozkuDoProduktovNakupnehoKosika(ProduktNakupnehoKosiku $produkt) {
+        $sql= "INSERT into produkty_nakupneho_kosiku (id_pouzivatela, id_produktu, pocetKusov, prichut, balenie, cena) VALUES (?, ?, ?, ?, ?, ?)";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute([$produkt->getIdPouzivatela(), $produkt->getIdProduktu(), $produkt->getPocetKusov(),$produkt->getPrichut(), $produkt->getBalenie(), $produkt->getCena()]);
+    }
+
+    public function dajProduktyNakupnehoKosika($idUctu) {
+        $sql = $this->pdo->prepare("SELECT * FROM produkty_nakupneho_kosiku WHERE id_pouzivatela = ?");
+        $sql->execute([$idUctu]);
+        return $sql->fetchAll(PDO::FETCH_CLASS, ProduktNakupnehoKosiku::class);
+    }
+
+    public function dajProduktPodlaId($id) {
+        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE idProduktu = ?");
+        $sql->execute([$id]);
+        return $sql->fetchAll(PDO::FETCH_CLASS, PonukanyProdukt::class)[0];
+    }
+
+    public function zmazPolozkuKosiku($id) {
+        $sql = $this->pdo->prepare("DELETE FROM produkty_nakupneho_kosiku WHERE id = ?");
+        $sql->execute([$id]);
     }
 
 }

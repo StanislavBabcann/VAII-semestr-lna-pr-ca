@@ -30,7 +30,7 @@
 
 
             <ul>
-                <li><a href="">Basket</a></li>
+                <li><a href="NakupnyKosik.php">Basket</a></li>
                 <li><a href="AccountStarter.php" > My account</a></li>
                 <li><a href="">Contact us</a></li>
 
