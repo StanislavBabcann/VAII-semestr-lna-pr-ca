@@ -124,6 +124,24 @@ class ProduktNakupnehoKosiku
         $this->balenie = $balenie;
     }
 
+    private $pocetDostupnychNaSklade;
+
+    /**
+     * @return mixed
+     */
+    public function getPocetDostupnychNaSklade()
+    {
+        return $this->pocetDostupnychNaSklade;
+    }
+
+    /**
+     * @param mixed $pocetDostupnychNaSklade
+     */
+    public function setPocetDostupnychNaSklade($pocetDostupnychNaSklade): void
+    {
+        $this->pocetDostupnychNaSklade = $pocetDostupnychNaSklade;
+    }
+
 
 
 }

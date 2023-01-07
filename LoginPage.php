@@ -4,7 +4,7 @@ session_start();
 
 
 include "Database.php";
-include "Pouzivatel.php";
+
 
 
 $db = new Database();
@@ -30,7 +30,7 @@ if (isset($_GET['logPotvrdit'])) {
 
         if(password_verify($_REQUEST['logPassword'], $heslo)) {
             $_SESSION['sesMail'] = $_REQUEST['logMail'];
-
+            $_SESSION['logged'] = 1;
             header("location: AccountStarter.php");
         } else {
             $passERR = "Incorrect password";

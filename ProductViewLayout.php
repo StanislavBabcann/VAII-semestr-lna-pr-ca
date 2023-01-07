@@ -5,11 +5,12 @@ include "Database.php";
 include "DostupneBalenie.php";
 include "DostupnaPrichutPreBalenie.php";
 
-include "Pouzivatel.php";
 
 ob_start();
 
 session_start();
+
+
 
 $db = new Database();
 
@@ -21,7 +22,7 @@ $cestaKObrazku = $infoAboutCurrentProduct["cestaKObrazku"];
 
 
 
-
+$warning = "";
 
 
 $vyrobca = $infoAboutCurrentProduct["vyrobca"];
@@ -33,8 +34,6 @@ $hlavnyNadpis = $infoAboutCurrentProduct["hlavnyNadpis"];
 $popisProduktu = $infoAboutCurrentProduct["popisProduktu"];
 
 $arrayOfBalenia = $db->dajDostupneBalenia($aktualneIdProduktu);
-
-
 
 $defaultCena = $db->dajCenuProduktuPodlaBalenia($aktualneIdProduktu,$arrayOfBalenia[0]->balenie)[0];
 
@@ -99,8 +98,12 @@ if (isset($_GET['categoryFromProduct'])) {
 
 
 if (isset($_GET['addToBasketButton'])) {
-    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-    $idNakupujuceho = $pouzivatel->id;
+    $idNakupujuceho = $_SESSION['ipcka'];
+    if ($_SESSION['logged'] == 1) {
+        $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+        $idNakupujuceho = $pouzivatel->id;
+    }
+
 
 
 
@@ -117,19 +120,34 @@ if (isset($_GET['addToBasketButton'])) {
 
 
     $pocetKusov = $_COOKIE["pocetKusov"];
-    $cenaProduktu = $_COOKIE["cena"];
+
+    $cenaProduktu = $defaultCena;
+    if(isset($_COOKIE['cena'])) {
+        $cenaProduktu = $_COOKIE["cena"];
+    }
+
+    $pocetNaSklade = $db->dajPocetProduktovNaSkladePodlaIdABalenia($aktualneIdProduktu, $balenie);
 
 
-    $produktKosiku = new ProduktNakupnehoKosiku();
 
-    $produktKosiku->setIdPouzivatela($idNakupujuceho);
-    $produktKosiku->setIdProduktu($aktualneIdProduktu);
-    $produktKosiku->setPocetKusov($pocetKusov);
-    $produktKosiku->setBalenie($balenie);
-    $produktKosiku->setPrichut($prichut);
-    $produktKosiku->setCena($cenaProduktu);
 
-    $db->pridajPolozkuDoProduktovNakupnehoKosika($produktKosiku);
+    if ($pocetKusov > $pocetNaSklade) {
+        $warning = "Lack of items in stock";
+
+    } else {
+        $produktKosiku = new ProduktNakupnehoKosiku();
+
+        $produktKosiku->setIdPouzivatela($idNakupujuceho);
+        $produktKosiku->setIdProduktu($aktualneIdProduktu);
+        $produktKosiku->setPocetKusov($pocetKusov);
+        $produktKosiku->setBalenie($balenie);
+        $produktKosiku->setPrichut($prichut);
+        $produktKosiku->setCena($cenaProduktu);
+
+        $_SESSION['nedostatok'] = 0;
+
+        $db->pridajPolozkuDoProduktovNakupnehoKosika($produktKosiku);
+    }
 
 
     setcookie("balenie", 1, time()-3600, "/");
@@ -267,7 +285,6 @@ if (isset($_GET['addToBasketButton'])) {
                 </select>
             </form>
 
-
             </div>
 
             <div class="selectFlavourBox">
@@ -313,6 +330,9 @@ if (isset($_GET['addToBasketButton'])) {
         <form>
             <input type="submit" name="addToBasketButton" value="Add to&#x00A;basket">
         </form>
+
+
+        <h4><?php echo $warning?></h4>
 
 
 

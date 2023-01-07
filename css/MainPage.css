@@ -811,6 +811,15 @@ h1{
     font-size: 3vw;
 }
 
+.productShowingLayout h4 {
+
+    margin-left: 43vw;
+    margin-top: 15.5vw;
+    font-size: 1.5vw;
+    color: red;
+
+}
+
 .productShowingLayout input {
 
     position: absolute;
@@ -1170,6 +1179,7 @@ th,td {
     font-size: 1vw;
     position: absolute;
     margin-left: 1vw;
+    margin-top: 1vw;
     color: red;
     font-weight: bold;
 }
@@ -1178,8 +1188,190 @@ th,td {
     margin-top: 3vw;
     width: 60vw;
     height: 9vw;
-    background-color: red;
+    background-color: white;
 }
+
+.basketProducts .zuctovanie .pokracuj {
+    position: absolute;
+    margin-top: 1vw;
+    margin-left: 2vw;
+
+}
+
+.basketProducts .zuctovanie .pokracuj a {
+    font-size: 1vw;
+    color: black;
+    text-decoration: none;
+}
+
+.basketProducts .zuctovanie .pokracuj a:hover {
+    text-decoration: underline;
+
+}
+
+.basketProducts .zuctovanie .zmazVsetko {
+    position: absolute;
+    margin-top: 2.5vw;
+    margin-left: 2vw;
+    width: 10vw;
+}
+
+.basketProducts .zuctovanie .zmazVsetko a {
+    font-size: 1vw;
+    color: black;
+    text-decoration: none;
+}
+
+.basketProducts .zuctovanie .zmazVsetko a:hover {
+    text-decoration: underline;
+}
+
+.basketProducts .zuctovanie h1 {
+    position: absolute;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-top: 1vw;
+    margin-left: 32vw;
+    color: black;
+}
+
+.basketProducts .zuctovanie h2 {
+    position: absolute;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-top: 1vw;
+    margin-left: 44vw;
+    color: black;
+}
+
+.basketProducts .zuctovanie h3 {
+    position: absolute;
+    font-size: 1.25vw;
+    margin-top: 3vw;
+    margin-left: 44vw;
+    color: black;
+}
+
+.basketProducts .zuctovanie input[type="submit"] {
+    position: absolute;
+    width: 14vw;
+    height: 3vw;
+    margin-top: 5.5vw;
+    margin-left: 43.5vw;
+    border-radius: 1vw;
+    background-color: limegreen;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.basketProducts .zuctovanie input[type="submit"]:hover {
+    background-color: yellow;
+
+}
+
+.transportation {
+    position: absolute;
+    margin-left: 25vw;
+    margin-top: 4vw;
+    width: 26vw;
+    height:19vw;
+    background-color: white;
+}
+
+.transportation h1 {
+    position: relative;
+    font-size: 1.5vw;
+    color: limegreen;
+    margin-left: 2vw;
+    margin-top: 1vw;
+}
+
+
+.transportation input[type="radio"] {
+    position: relative;
+    margin-top: 3vw;
+    margin-left: 2vw;
+    display: block;
+}
+
+.transportation label {
+    padding:0;
+    margin-top: -1.25vw;
+    color: black;
+    font-weight: bold;
+    font-size: 1.25vw;
+    display: block;
+    margin-left: 4vw;
+}
+
+.transportation p {
+    font-size: 1vw;
+    margin-left: 4vw;
+}
+
+.payment {
+    position: absolute;
+    margin-left: 55vw;
+    margin-top: 4vw;
+    width: 26vw;
+    height:19vw;
+    background-color: white;
+}
+
+.payment h1 {
+    position: relative;
+    font-size: 1.5vw;
+    color: limegreen;
+    margin-left: 2vw;
+    margin-top: 1vw;
+}
+
+
+.payment input[type="radio"] {
+    position: relative;
+    margin-top: 3vw;
+    margin-left: 2vw;
+    display: block;
+}
+
+.payment label {
+    margin-top: -1.25vw;
+    color: black;
+    font-weight: bold;
+    font-size: 1.25vw;
+    display: block;
+    margin-left: 4vw;
+}
+
+.payment p {
+    font-size: 1vw;
+    margin-left: 4vw;
+}
+
+.makeOrder {
+    position: absolute;
+    margin-left:42vw;
+    width: 22vw;
+    height: 10vw;
+    margin-top: 26vw;
+}
+
+.makeOrder input[type="submit"] {
+
+    width: 20vw;
+    height: 6vw;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    border-radius: 1vw;
+    background-color: limegreen;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: yellow;
+}
+
 
 
 

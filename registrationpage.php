@@ -5,7 +5,6 @@
 session_start();
 
 include "Database.php";
-include "Pouzivatel.php";
 include "InputValidator.php";
 
 
@@ -137,8 +136,7 @@ $db = new Database();
                 <p>Confirm password</p>
                 <input type="password" name="regHesloZnova" placeholder="Re-enter password">
                 <span class = "error" style="color: red"> <?php echo $secondPasErr;?></span>
-                <input type="submit" name="regPotvrdit" value="Register" onclick="return validateRegistrationInput(registrationForm.regMeno.value, registrationForm.regPriezvisko.value, registrationForm.regMail.value,
-             registrationForm.regMesto.value, registrationForm.regUlica.value, registrationForm.regHeslo.value, registrationForm.regHesloZnova.value)">
+                <input type="submit" name="regPotvrdit" value="Register" >
 
 
             </form>

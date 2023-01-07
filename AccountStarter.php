@@ -5,9 +5,11 @@ session_start();
 
 $db = new Database();
 
+$_SESSION['logged'] = $_SESSION['logged'];
 
 if (isset($_GET['upravProfilBtn'])) {
-
+    $_SESSION['titulPreFormu'] = "Edit profile";
+    $_SESSION['titulPreButton'] = "Edit";
     header("location: editprofile.php");
     die();
 
@@ -34,11 +36,10 @@ if (isset($_GET['odhlasSaBtn'])) {
 }
 
 if (isset($_GET['chodDoKosikuBtn'])) {
-    $_SESSION['logged'] = 0;
     header("location: NakupnyKosik.php");
     die;
 }
-$_SESSION['logged'] = 1;
+
 
 ?>
 

@@ -1,6 +1,7 @@
 <?php
 include "ProduktNakupnehoKosiku.php";
 include "PonukanyProdukt.php";
+include "Pouzivatel.php";
 
 class Database
 {
@@ -77,7 +78,7 @@ class Database
     public function dajProduktyHlavnejKategorie($hlavnaKategoria) {
 
 
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE hlavnaKategoria = ?");
+        $sql = $this->pdo->prepare("SELECT DISTINCT idProduktu, cestaKObrazku, nazovProduktu FROM produkty PR JOIN varianty_produktov VP ON PR.idProduktu = VP.id_produktu WHERE PR.hlavnaKategoria = ? && VP.pocetKusov != 0");
         $sql->execute([$hlavnaKategoria]);
         return $sql->fetchAll();
     }
@@ -85,7 +86,7 @@ class Database
     public function dajProduktyPodKategorie($podKategoria) {
 
 
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE podKategoria = ?");
+        $sql = $this->pdo->prepare("SELECT DISTINCT idProduktu, cestaKObrazku, nazovProduktu FROM produkty PR JOIN varianty_produktov VP ON PR.idProduktu = VP.id_produktu WHERE PR.podKategoria = ? && VP.pocetKusov != 0");
         $sql->execute([$podKategoria]);
         return $sql->fetchAll();
     }
@@ -182,6 +183,22 @@ class Database
     public function zmazPolozkuKosiku($id) {
         $sql = $this->pdo->prepare("DELETE FROM produkty_nakupneho_kosiku WHERE id = ?");
         $sql->execute([$id]);
+    }
+
+    public function vyprazdniKosik($idUzivatela) {
+        $sql = $this->pdo->prepare("DELETE FROM produkty_nakupneho_kosiku WHERE id_pouzivatela = ?");
+        $sql->execute([$idUzivatela]);
+    }
+
+    public function odoberVariantProduktuZoSkladu($idProduktu, $balenie) {
+        $sql = $this->pdo->prepare("UPDATE  varianty_produktov SET pocetKusov = pocetKusov - 1 WHERE id_produktu = ? && balenie = ?");
+        $sql->execute([$idProduktu, $balenie]);
+    }
+
+    public function dajPocetProduktovNaSkladePodlaIdABalenia($idProduktu, $balenie) {
+        $sql = $this->pdo->prepare("SELECT pocetKusov FROM varianty_produktov WHERE id_produktu = ? && balenie = ?");
+        $sql->execute([$idProduktu, $balenie]);
+        return $sql->fetchAll()[0][0];
     }
 
 }

@@ -27,7 +27,7 @@
             <div class="nav-links" id="navLinks">
 
                 <ul>
-                    <li><a href="NakupnyKosik.php">Basket</a></li>
+                    <li><a href="NakupnyKosik.php" > Basket</a></li>
                     <li><a href="LoginPage.php" > Login/registration</a></li>
                     <li><a href="">Contact us</a></li>
 

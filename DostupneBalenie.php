@@ -4,7 +4,7 @@ class DostupneBalenie
 {
     private $hmotnost;
 
-
+    
     /**
      * @return mixed
      */

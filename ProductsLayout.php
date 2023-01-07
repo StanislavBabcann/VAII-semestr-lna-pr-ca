@@ -7,9 +7,12 @@ ob_start();
 
 $loginManager = new LogginManager();
 
+
 session_start();
 
+
 $db = new Database();
+
 $productShowingManager = new ProductShowingManager();
 
 $chosenCategory = $_SESSION['choosenCategorySES'];
