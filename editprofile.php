@@ -37,15 +37,17 @@ if ($_SESSION['logged'] == 1) {
 
 if (isset($_GET['potvrdit'])) {
 
+    $editMeno = $_REQUEST['meno'];
+    $editLast = $_REQUEST['priezvisko'];
+    $editMail = $_REQUEST['mail'];
+    $editMesto = $_REQUEST['mesto'];
+    $editUlica = $_REQUEST['ulica'];
+
     if ($_SESSION['titulPreFormu'] == "Edit profile") {
 
         $upravenyPouzivatel = new Pouzivatel();
 
-        $editMeno = $_REQUEST['meno'];
-        $editLast = $_REQUEST['priezvisko'];
-        $editMail = $_REQUEST['mail'];
-        $editMesto = $_REQUEST['mesto'];
-        $editUlica = $_REQUEST['ulica'];
+
 
         $inpValidator = new InputValidator();
 
@@ -82,6 +84,13 @@ if (isset($_GET['potvrdit'])) {
             die();
         }
     } else {
+        $_SESSION['ordMeno'] = $editMeno;
+        $_SESSION['ordPriezvisko'] = $editLast;
+        $_SESSION['ordMail'] = $editMail;
+        $_SESSION['ordMesto'] = $editMesto;
+        $_SESSION['ordUlica'] = $editUlica;
+
+
         header("location: VolbaDopravy.php");
 
 

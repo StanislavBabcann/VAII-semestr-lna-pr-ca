@@ -201,4 +201,9 @@ class Database
         return $sql->fetchAll()[0][0];
     }
 
+    public function aktualizujPocetProduktovPolozkyKosiku($idPolozky, $pocetKusov) {
+        $sql = $this->pdo->prepare("UPDATE produkty_nakupneho_kosiku SET pocetKusov = ? WHERE id = ?");
+        $sql->execute([$pocetKusov, $idPolozky]);
+    }
+
 }

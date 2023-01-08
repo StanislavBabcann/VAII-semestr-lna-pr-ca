@@ -183,7 +183,7 @@ if (isset($_GET['addToBasketButton'])) {
 
     function getDate() {
         const d = new Date();
-        d.setTime(d.getTime() + (1*60*1000));
+        d.setTime(d.getTime() + (2*60*1000));
         let expires = "expires="+ d.toUTCString();
 
         return expires;

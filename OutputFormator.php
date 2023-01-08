@@ -17,6 +17,11 @@ class OutputFormator
     }
 
     public function editPrize($prize) {
+        $prize = round($prize, 2);
+        if (!strpos($prize, ".")) {
+            $prize = $prize.".00";
+        }
+
         $array = explode(".", $prize);
 
         if (strlen($array[1]) == 1) {

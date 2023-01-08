@@ -18,6 +18,8 @@ if ($_SESSION['logged'] == 1) {
 }
 $produktyKosiku = $db->dajProduktyNakupnehoKosika($idNakupujuceho);
 
+
+
 echo $idNakupujuceho;
 if (isset($_GET['deleteBasket'])) {
     if ($_GET['deleteBasket'] == 1) {
@@ -49,6 +51,8 @@ if (isset($_GET['deleteBasket'])) {
         obj.open("GET", "home.txt", true);
 
         obj.send();
+
+        var idMenenej = document.getElementById(index + "id").value.trim();
 
         var aktualnaCena = document.getElementById("cenaPolozky" + index).innerHTML;
         aktualnaCena = makeDoubleOfInput(aktualnaCena);
@@ -85,6 +89,8 @@ if (isset($_GET['deleteBasket'])) {
 
             document.getElementById("cenaBezDph").innerHTML = cenaBezDph + " without VAT";
 
+            obj.open("GET", "aktualizujPocetKusov.php?pocet=" + pocetKusov + "&idPolozky=" + idMenenej, true);
+            obj.send();
         }
 
     }
@@ -165,6 +171,8 @@ if (isset($_GET['deleteBasket'])) {
             <form id="pocetKusovProduktu" method="post">
                 <label for="pocetKusovProduktu"></label>
                 <input type="number" name=<?php echo $i?> id=<?php echo $i?> min="1" max=<?php echo $dostupnyPocet?> onchange="changePrize(<?php echo $i?>, <?php echo sizeof($produktyKosiku)?>)" value=<?php echo $jednaPolozka->getPocetKusov()?> >
+                <input type="hidden" name=<?php echo $i."id"?> id=<?php echo $i."id"?> value="<?php echo $jednaPolozka->getId()?>"/>
+
             </form>
             <h3 id=<?php echo "cenaPolozky".$i?>> <?php echo $outputFormator->editPrize($jednaPolozka->getCena())?></h3>
 

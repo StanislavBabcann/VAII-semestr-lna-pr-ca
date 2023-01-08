@@ -11,7 +11,12 @@ $basketManager = new BasketManager();
 
 session_start();
 $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-$idNakupujuceho = $pouzivatel->id;
+$idNakupujuceho = $_SESSION['ipcka'];
+
+if ($_SESSION['logged'] == 1) {
+    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+    $idNakupujuceho = $pouzivatel->id;
+}
 
 $produktyKosiku = $db->dajProduktyNakupnehoKosika($idNakupujuceho);
 
@@ -42,6 +47,8 @@ if (isset($_GET['deleteBasket'])) {
 }
 
 if (isset($_GET['makeOrderBtn'])) {
+
+    $_SESSION['ordId'] = $idNakupujuceho;
     $_SESSION['idUzivatela'] = $idNakupujuceho;
     $_SESSION['titulPreFormu'] = "Personal information";
     $_SESSION['titulPreButton'] = "Continue";
