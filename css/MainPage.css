@@ -14,6 +14,8 @@
     position: relative;
 }
 
+
+
 nav{
     display: flex;
     padding: 2% 6%;
@@ -28,6 +30,7 @@ nav img{
 .nav-links{
     flex: 1;
     text-align: right;
+    margin-top: -4vw;
 }
 
 .nav-links ul li{
@@ -55,6 +58,34 @@ nav img{
 
 .nav-links ul li:hover::after{
     width: 100%;
+}
+
+.nav-logo {
+    flex: 1;
+    text-align: left;
+    margin-top: -2vw;
+    margin-left: -4.5vw;
+}
+
+.nav-logo ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 0.75vw 1vw;
+    position: relative;
+}
+
+.nav-logo ul li a {
+    color: limegreen;
+    text-decoration: none;
+    font-size: 4vw;
+    font-family: "Brush Script MT";
+}
+
+.nav-logo ul li a:hover{
+    color: yellow;
+    transition: 0.75s;
+
+
 }
 
 
@@ -1108,6 +1139,57 @@ th,td {
     width: 60vw;
     height: 5vw;
     background-color: white;
+}
+
+.basketProducts .kupon {
+    margin-top: 3vw;
+    position: relative;
+    width: 60vw;
+    height: 3.25vw;
+    background-color: white;
+}
+
+.basketProducts .kupon h1 {
+    font-weight: bold;
+    position: absolute;
+    font-size: 1.25vw;
+    color: limegreen;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+
+.basketProducts .kupon input[type="text"] {
+    position: absolute;
+    font-size: 1.25vw;
+    color: black;
+    margin-left: 16vw;
+    width: 10vw;
+    margin-top: 1vw;
+}
+
+.basketProducts .kupon input[type="submit"] {
+    position: absolute;
+    font-size: 1.25vw;
+    color: black;
+    margin-left: 54vw;
+    background-color: limegreen;
+    width: 5vw;
+    margin-top: 1vw;
+    border-radius: 1vw;
+    font-weight: bold;
+}
+
+.basketProducts .kupon h2 {
+    font-weight: bold;
+    position: absolute;
+    font-size: 1.25vw;
+    color: black;
+    margin-left: 28vw;
+    margin-top: 1vw;
+}
+
+.basketProducts .kupon input[type="submit"]:hover {
+    background-color: yellow;
 }
 
 

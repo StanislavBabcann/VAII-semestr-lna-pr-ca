@@ -10,12 +10,14 @@ $outputFormator = new OutputFormator();
 $basketManager = new BasketManager();
 
 session_start();
-$pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+
 $idNakupujuceho = $_SESSION['ipcka'];
 
-if ($_SESSION['logged'] == 1) {
-    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-    $idNakupujuceho = $pouzivatel->id;
+if (isset($_GET['logged'])) {
+    if ($_SESSION['logged'] == 1) {
+        $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+        $idNakupujuceho = $pouzivatel->id;
+    }
 }
 
 $produktyKosiku = $db->dajProduktyNakupnehoKosika($idNakupujuceho);

@@ -10,8 +10,6 @@ session_start();
 
 $db = new Database();
 
-$pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-
 $mailErr = " " ;
 $nameErr = " " ;
 $lastErr = " " ;
@@ -25,13 +23,18 @@ $editMesto = null;
 $editUlica = null;
 $staryMail = null;
 
-if ($_SESSION['logged'] == 1) {
-    $editMeno = $pouzivatel->meno;
-    $editLast = $pouzivatel->priezvisko;
-    $editMail = $pouzivatel->mail;
-    $editMesto = $pouzivatel->mesto;
-    $editUlica = $pouzivatel->ulica;
-    $staryMail = $pouzivatel->mail;
+
+if (isset($_SESSION['logged'])) {
+    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+
+    if ($_SESSION['logged'] == 1) {
+        $editMeno = $pouzivatel->meno;
+        $editLast = $pouzivatel->priezvisko;
+        $editMail = $pouzivatel->mail;
+        $editMesto = $pouzivatel->mesto;
+        $editUlica = $pouzivatel->ulica;
+        $staryMail = $pouzivatel->mail;
+    }
 }
 
 

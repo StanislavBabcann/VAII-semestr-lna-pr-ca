@@ -2,10 +2,12 @@
 include "LogginManager.php";
 include "Database.php";
 include "ProductShowingManager.php";
+include "OutputFormator.php";
 
 ob_start();
 
 $loginManager = new LogginManager();
+$outFormator = new OutputFormator();
 
 
 session_start();
@@ -56,7 +58,7 @@ for ($i = 0; $i < 10; $i++) {
     $arrayForPrintingNumbers[$i] = $helpIndexForPrintingProducts + $i;
 
     if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[$i] , $pocetProduktov)) {
-        $idProduktu = $produkty[$arrayForPrintingNumbers[$i]]["idProduktu"];
+        $idProduktu = $produkty[$arrayForPrintingNumbers[$i]]->getIdProduktu();
         $cenyProduktov[$i] = $db->dajNajnizsieCenyProduktov($idProduktu);
     }
 }
@@ -104,7 +106,7 @@ if(isset($_GET['currentProduct'])) {
     for ($i = 0; $i < 10; $i++) {
         if ($chosenProduct == $i) {
 
-            $idOfChosenProcut = $produkty[$arrayForPrintingNumbers[$i]]["idProduktu"];
+            $idOfChosenProcut = $produkty[$arrayForPrintingNumbers[$i]]->getIdProduktu();
             $_SESSION['currentProductId'] = $idOfChosenProcut;
 
 
@@ -138,127 +140,44 @@ if(isset($_GET['currentProduct'])) {
 
         $loginManager->setLayout();
 
-
         ?>
 
         <div class="main-title">
             <h1><?php echo $chosenCategory?></h1>
 
-
         </div>
 
         <section class="listed-products">
 
-
-
             <div class="best-products-row">
 
                 <div class="separator">
 
-
                 </div>
 
-
-
+                <?php for($i = 0; $i < 5; $i++) {?>
                 <div class="best-products-column-image">
 
+                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[$i] , $pocetProduktov)) {?>
 
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[0] , $pocetProduktov)) {?>
-
-                            <a href="?currentProduct=0" >
-                     <img src=<?php  echo $produkty[$arrayForPrintingNumbers[0]]["cestaKObrazku"]?> alt=""  >
+                            <a href="?currentProduct=<?php echo $i?>" >
+                     <img src=<?php  echo $produkty[$arrayForPrintingNumbers[$i]]->getCestaKObrazku()?> alt=""  >
 
 
 
                         <div class="best-products-effect" >
-                    <h1> <?php echo $produkty[$arrayForPrintingNumbers[0]]["nazovProduktu"]?> </h1>
+                    <h1> <?php echo $produkty[$arrayForPrintingNumbers[$i]]->getNazovProduktu()?> </h1>
                         </div>
                             </a>
-                    <p> <?php echo $cenyProduktov[0]?> </p>
+                    <p> <?php echo $outFormator->editPrize($cenyProduktov[$i])?> </p>
                     <?php } ?>
 
 
                 </div>
+                <?php }?>
 
-
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[1] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=1">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[1]]["cestaKObrazku"]?> alt=""  >
-
-
-                    <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[1]]["nazovProduktu"]?> </h1>
-                    </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[1]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[2] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=2">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[2]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                            <h1> <?php echo $produkty[$arrayForPrintingNumbers[2]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-
-                        <p> <?php echo $cenyProduktov[2]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[3] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=3">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[3]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[3]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[3]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[4] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=4">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[4]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[4]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[4]?> </p>
-                    <?php } ?>
-
-
-                </div>
 
             </div>
-
 
             <div class="best-products-row">
 
@@ -267,102 +186,29 @@ if(isset($_GET['currentProduct'])) {
 
                 </div>
 
+                <?php for($i = 5; $i < 10; $i++) {?>
+                    <div class="best-products-column-image">
+
+                        <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[$i] , $pocetProduktov)) {?>
+
+                            <a href="?currentProduct=<?php echo $i?>" >
+                                <img src=<?php  echo $produkty[$arrayForPrintingNumbers[$i]]->getCestaKObrazku()?> alt=""  >
 
 
-                <div class="best-products-column-image">
+
+                                <div class="best-products-effect" >
+                                    <h1> <?php echo $produkty[$arrayForPrintingNumbers[$i]]->getNazovProduktu()?> </h1>
+                                </div>
+                            </a>
+                            <p> <?php echo $outFormator->editPrize($cenyProduktov[$i])?> </p>
+                        <?php } ?>
 
 
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[5] , $pocetProduktov)) {?>
+                    </div>
+                <?php }?>
 
-                    <a href="?currentProduct=5">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[5]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[5]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[5]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[6] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=6">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[6]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[6]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[6]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[7] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=7">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[7]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[7]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[7]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[8] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=8">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[8]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[8]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[8]?> </p>
-                    <?php } ?>
-
-
-                </div>
-
-                <div class="best-products-column-image">
-
-
-                    <?php if ($productShowingManager->shouldShowNextProduct($arrayForPrintingNumbers[9] , $pocetProduktov)) {?>
-
-                    <a href="?currentProduct=9">
-                        <img src=<?php  echo $produkty[$arrayForPrintingNumbers[9]]["cestaKObrazku"]?> alt=""  >
-
-                        <div class="best-products-effect" >
-                        <h1> <?php echo $produkty[$arrayForPrintingNumbers[9]]["nazovProduktu"]?> </h1>
-                        </div>
-                    </a>
-                        <p> <?php echo $cenyProduktov[9]?> </p>
-                    <?php } ?>
-
-
-                </div>
 
             </div>
-
-
-
 
 
         </section>
@@ -370,7 +216,6 @@ if(isset($_GET['currentProduct'])) {
         <div class="pageNumebrsBox">
 
             <form>
-
 
                 <?php if ($productShowingManager->showBackButton($currentPage)) { ?>
                     <input type="submit" name="tlacidloSpat" value="←">

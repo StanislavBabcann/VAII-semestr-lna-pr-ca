@@ -98,6 +98,32 @@ if (isset($_GET['odosliObjednavku'])) {
 
     $vystup = $vystup."Spôsob platby: ".$platba."\n";
 
+    $kodKuponu = null;
+    $zlava = null;
+
+    if(isset($_COOKIE['kodKuponu'])) {
+        $kodKuponu = $_COOKIE["kodKuponu"];
+        $zlava = $_COOKIE["kupon"];
+
+        $vystup = $vystup."\n";
+
+        $vystup = $vystup."Uplatneni kupon: ".$kodKuponu.", zlava: ".$zlava."%\n";
+        $sumaSKuponom = $celkovaCena - ($celkovaCena / 100 * $zlava);
+        $sumaSKuponom = $outFormator->editPrize($sumaSKuponom);
+        $vystup = $vystup."Suma spolu po uplatneni kuponu: ".$sumaSKuponom;
+
+        setcookie("kodKuponu", 1, time()-3600, "/");
+        setcookie("kupon", 1, time()-3600, "/");
+    }
+
+    if ($kodKuponu != null) {
+        $db->pouziKupon($kodKuponu);
+    }
+
+
+
+
+
     $celkovaCenaSDph = $outFormator->editPrize($celkovaCena);
 
     $vystup = $vystup."\n";
@@ -150,7 +176,6 @@ if (isset($_GET['odosliObjednavku'])) {
     function setPlatba(str) {
         let expires = getDate();
 
-        alert(str);
         document.cookie = "platba" + "=" + str + ";" + expires + ";path=/";
     }
 

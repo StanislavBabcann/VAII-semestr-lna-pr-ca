@@ -12,15 +12,15 @@ $outputFormator = new OutputFormator();
 $basketManager = new BasketManager();
 $idNakupujuceho = $_SESSION['ipcka'];
 
-if ($_SESSION['logged'] == 1) {
-    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-    $idNakupujuceho = $pouzivatel->id;
+if (isset($_GET['logged'])) {
+    if ($_SESSION['logged'] == 1) {
+        $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+        $idNakupujuceho = $pouzivatel->id;
+    }
 }
 $produktyKosiku = $db->dajProduktyNakupnehoKosika($idNakupujuceho);
 
 
-
-echo $idNakupujuceho;
 if (isset($_GET['deleteBasket'])) {
     if ($_GET['deleteBasket'] == 1) {
         $db->vyprazdniKosik($idNakupujuceho);
@@ -40,7 +40,19 @@ if (isset($_GET['deleteBasket'])) {
 </head>
 
 <script type="text/javascript">
+    function getDate() {
+        const d = new Date();
+        d.setTime(d.getTime() + (2*60*1000));
+        let expires = "expires="+ d.toUTCString();
+
+        return expires;
+
+    }
+
     function changePrize(index, maximalLength) {
+
+
+        var zlava = getCookie("kupon");
 
         var celkovaCena = 0.0;
 
@@ -60,6 +72,7 @@ if (isset($_GET['deleteBasket'])) {
 
         celkovaCena += parseFloat(aktualnaCena);
 
+
         for (let i = 0; i < maximalLength; i++) {
             if (index != i) {
                 var celkovaCenaPolozky = document.getElementById("celkovaCenaPolozky" + i.toString()).innerHTML;
@@ -70,6 +83,9 @@ if (isset($_GET['deleteBasket'])) {
 
 
         }
+
+
+        celkovaCena = celkovaCena - (celkovaCena / 100 * zlava);
 
         obj.onreadystatechange = function () {
 
@@ -108,6 +124,52 @@ if (isset($_GET['deleteBasket'])) {
         input = input + " €";
 
         return input;
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function skontrolujKupon(maximalLength) {
+        str = document.getElementById("textKupon").value;
+
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let expires = getDate();
+
+                const array = this.responseText.split(".");
+
+                if (array[0].localeCompare("Coupon accepted") == 0) {
+
+                    document.cookie = "kupon" + "=" + array[1] + ";" + expires + ";path=/";
+                    document.cookie = "kodKuponu" + "=" + str + ";" + expires + ";path=/";
+                }
+
+                document.getElementById("upozornenieKupon").innerHTML = array[0];
+
+                changePrize(0, maximalLength);
+
+            }
+        };
+        xhttp.open("GET", "skontrolujKupon.php?q="+str, true);
+        xhttp.send();
+
+
+
     }
 
 </script>
@@ -194,6 +256,20 @@ if (isset($_GET['deleteBasket'])) {
 
     <?php $i++;} ?>
 
+
+        <?php if (sizeof($produktyKosiku) != 0 ) {
+            ?>
+            <div class="kupon">
+
+                <h1>Use a discount coupon</h1>
+                <input name="textKupon" id="textKupon" type="text">
+                <input type="submit" value="USE" onclick="skontrolujKupon(<?php echo $i?>)">
+                <h2 id="upozornenieKupon"></h2>
+            </div>
+        <?php } ?>
+
+
+
         <div class="zuctovanie">
 
 
@@ -214,7 +290,7 @@ if (isset($_GET['deleteBasket'])) {
 
 
             <form>
-                <input name="makeOrderBtn" type="submit" value="ORDER">
+                <input id = "makeOrderBtn" name="makeOrderBtn" type="submit" value="ORDER">
             </form>
 
             <?php } ?>

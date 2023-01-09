@@ -99,9 +99,11 @@ if (isset($_GET['categoryFromProduct'])) {
 
 if (isset($_GET['addToBasketButton'])) {
     $idNakupujuceho = $_SESSION['ipcka'];
-    if ($_SESSION['logged'] == 1) {
-        $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
-        $idNakupujuceho = $pouzivatel->id;
+    if (isset($_GET['logged'])) {
+        if ($_SESSION['logged'] == 1) {
+            $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+            $idNakupujuceho = $pouzivatel->id;
+        }
     }
 
 
@@ -199,6 +201,8 @@ if (isset($_GET['addToBasketButton'])) {
         prize = splitArray[0];
         weight = splitArray[1];
 
+        output = parseFloat(prize).toFixed(2);
+
         var obj = new XMLHttpRequest();
 
         obj.open("GET", "home.txt", true);
@@ -207,7 +211,7 @@ if (isset($_GET['addToBasketButton'])) {
 
         obj.onreadystatechange = function() {
 
-            document.getElementById("cenaProduktu").innerHTML = prize + " €";
+            document.getElementById("cenaProduktu").innerHTML = output + " €";
         }
 
 

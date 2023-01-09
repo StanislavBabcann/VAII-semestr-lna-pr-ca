@@ -2,6 +2,7 @@
 include "ProduktNakupnehoKosiku.php";
 include "PonukanyProdukt.php";
 include "Pouzivatel.php";
+include "Kupon.php";
 
 class Database
 {
@@ -80,7 +81,7 @@ class Database
 
         $sql = $this->pdo->prepare("SELECT DISTINCT idProduktu, cestaKObrazku, nazovProduktu FROM produkty PR JOIN varianty_produktov VP ON PR.idProduktu = VP.id_produktu WHERE PR.hlavnaKategoria = ? && VP.pocetKusov != 0");
         $sql->execute([$hlavnaKategoria]);
-        return $sql->fetchAll();
+        return $sql->fetchAll(PDO::FETCH_CLASS, PonukanyProdukt::class);
     }
 
     public function dajProduktyPodKategorie($podKategoria) {
@@ -88,7 +89,7 @@ class Database
 
         $sql = $this->pdo->prepare("SELECT DISTINCT idProduktu, cestaKObrazku, nazovProduktu FROM produkty PR JOIN varianty_produktov VP ON PR.idProduktu = VP.id_produktu WHERE PR.podKategoria = ? && VP.pocetKusov != 0");
         $sql->execute([$podKategoria]);
-        return $sql->fetchAll();
+        return $sql->fetchAll(PDO::FETCH_CLASS, PonukanyProdukt::class);
     }
 
     public function dajInfoOProdukte($idProduktu) {
@@ -98,9 +99,9 @@ class Database
     }
 
     public function dajProduktyPodlaVyrobcu($vyrobca) {
-        $sql = $this->pdo->prepare("SELECT * FROM produkty WHERE vyrobca = ?");
+        $sql = $this->pdo->prepare("SELECT DISTINCT idProduktu, cestaKObrazku, nazovProduktu FROM produkty PR JOIN varianty_produktov VP ON PR.idProduktu = VP.id_produktu WHERE PR.vyrobca = ? && VP.pocetKusov != 0");
         $sql->execute([$vyrobca]);
-        return $sql->fetchAll();
+        return $sql->fetchAll(PDO::FETCH_CLASS, PonukanyProdukt::class);
     }
 
     public function dajVariantyProduktov($idProduktu) {
@@ -204,6 +205,17 @@ class Database
     public function aktualizujPocetProduktovPolozkyKosiku($idPolozky, $pocetKusov) {
         $sql = $this->pdo->prepare("UPDATE produkty_nakupneho_kosiku SET pocetKusov = ? WHERE id = ?");
         $sql->execute([$pocetKusov, $idPolozky]);
+    }
+
+    public function dajKupon($kod) {
+        $sql = $this->pdo->prepare("SELECT * FROM kupony WHERE kod = ?");
+        $sql->execute([$kod]);
+        return $sql->fetchAll(PDO::FETCH_CLASS, Kupon::class);
+    }
+
+    public function pouziKupon($kod) {
+        $sql = $this->pdo->prepare("UPDATE kupony SET pouzity=1 WHERE kod = ?");
+        $sql->execute([$kod]);
     }
 
 }
