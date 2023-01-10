@@ -3,8 +3,9 @@ include_once "../Controller/sideCategoriesHeader.php";
 ?>
 
 
-
-
+<head>
+<meta name="viewport" content="width=device-width">
+</head>
 
 <script>
 
@@ -37,11 +38,26 @@ include_once "../Controller/sideCategoriesHeader.php";
     }
 
 
+
+    var limitFunc = function(){
+        if (window.outerWidth>816){
+
+            document.getElementById("categories-box").style.left = "12vw";
+
+        } else {
+            document.getElementById("categories-box").style.left = "-30vw";
+        }
+    };
+
+    window.addEventListener("resize", limitFunc);
+
+
 </script>
 
 
 
-<div class="categories-box">
+<div id="categories-box" class="categories-box">
+
 
 
     <div class="dropdown">
@@ -167,6 +183,8 @@ include_once "../Controller/sideCategoriesHeader.php";
 
 
     </div>
+
+
 
 </div>
 

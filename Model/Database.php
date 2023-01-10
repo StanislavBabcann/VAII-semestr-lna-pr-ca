@@ -146,7 +146,7 @@ class Database
     }
 
     public function nacitajData() {
-        $filename = 'files/variantyProduktov.txt';
+        $filename = '../VariantyProduktov.txt';
 
 
         $f = fopen($filename, 'r');

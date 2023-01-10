@@ -115,7 +115,7 @@ include_once "../Controller/NakupnyKosikHeader.php";
 
 
             <div class="pokracuj">
-                <a href="homePage.php"> Continue shopping</a>
+                <a href="ProductsLayout.php"> Continue shopping</a>
             </div>
 
 

@@ -14,6 +14,8 @@ session_start();
 
 $db = new Database();
 
+//$db->nacitajData();
+
 $productShowingManager = new ProductShowingManager();
 
 $chosenCategory = "Best products";
@@ -43,7 +45,7 @@ if ($wayOfFiltering == "hlavna") {
     $produkty = $db->dajVsetkyProdukty();
 }
 
-
+$currentPage = 1;
 if (isset($_SESSION['currentPageNumber'])) {
     $currentPage = $_SESSION['currentPageNumber'];
 }
@@ -71,9 +73,13 @@ for ($i = 0; $i < 10; $i++) {
     }
 }
 
-$stranky = array('prvaStranka', 'druhaStranka', 'tretiaStranka', 'stvrtaStranka','piataStranka');
+$stranky = array();
 
+for ($i = 1; $i < 11; $i++) {
+    $nazovPage = "stranka".$i;
+    array_push($stranky, $nazovPage);
 
+}
 for ($i = 0; $i < 5; $i++) {
     if (isset($_GET[$stranky[$i]])) {
 

@@ -11,6 +11,8 @@ include "../Controller/ProductsLayoutHeader.php";
 
 </head>
 
+
+
 <body>
     <section class = "header" >
 
@@ -103,7 +105,7 @@ include "../Controller/ProductsLayoutHeader.php";
 
                 <?php for ($i = 1; $i < 11; $i++) {
                     if ($productShowingManager->shouldShowNextNumberOfPage($pocetProduktov, $i)) {?>
-                        <input type="submit" name="prvaStranka" <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, 1)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value=<?php echo $i?>>
+                        <input type="submit" name=<?php echo "stranka".$i ?> <?php if ($productShowingManager->highlightCurrentPageButton($currentPage, $i)) { ?> style="background-color: #ffc107; color: black" disabled <?php } ?> value=<?php echo $i?>>
 
                 <?php }}?>
 

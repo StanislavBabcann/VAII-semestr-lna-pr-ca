@@ -2,7 +2,13 @@
 
 ?>
 
+<script src="../Script/javascripts.js" language="JavaScript" type="text/javascript">
 
+</script>
+
+<div class="sideMenuButton">
+    <a onclick="openNav()">≡</a>
+</div>
 
         <nav>
 
@@ -18,7 +24,7 @@
                 <ul>
                     <li><a href="NakupnyKosik.php" > Basket</a></li>
                     <li><a href="LoginPage.php" > Login/registration</a></li>
-                    <li><a href="">Contact us</a></li>
+                    <li><a  onclick="nedostupne()">Contact us</a></li>
 
                 </ul>
 

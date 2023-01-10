@@ -3,7 +3,13 @@
 ?>
 
 
+<script src="../Script/javascripts.js" language="JavaScript" type="text/javascript">
 
+</script>
+
+<div class="sideMenuButton">
+    <a onclick="openNav()">≡</a>
+</div>
 
     <nav>
         <div class="nav-logo" id="nav-logo">

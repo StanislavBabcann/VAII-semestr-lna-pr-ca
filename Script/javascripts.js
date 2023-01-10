@@ -207,3 +207,19 @@ function setPlatba(str) {
 
     document.cookie = "platba" + "=" + str + ";" + expires + ";path=/";
 }
+
+function nedostupne() {
+    alert("This feature will be available soon!");
+}
+
+function openNav() {
+
+    left = document.getElementById("categories-box").style.left;
+
+
+    if (left.localeCompare("20vw") == 0) {
+        document.getElementById("categories-box").style.left = "-30vw";
+    } else {
+        document.getElementById("categories-box").style.left = "20vw";
+    }
+}

@@ -6,7 +6,7 @@
 }
 
 .header {
-    min-height: 100vh;
+    min-height: 100vw;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../images/uvodny.png);
     background-position: center;
@@ -348,7 +348,6 @@ h1{
     border: none;
     outline: none;
     height: 2vw;
-    alignment: center;
     font-size: 1vw;
     border-radius: 20px
 }
@@ -896,6 +895,7 @@ h1{
 
 .productShowingLayout img {
     width: 16vw;
+
 
 }
 
@@ -1525,6 +1525,182 @@ th,td {
 
 input[type="submit"]:hover {
     background-color: yellow;
+}
+
+.sideMenuButton {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+    .header {
+        min-height: 112vw;
+
+    }
+    /* bocne tlacitko pre otvorenie meny*/
+    .sideMenuButton {
+        position: absolute;
+        display: inline-block;
+        margin-top: -1vw;
+        width: 6vw;
+
+    }
+    .sideMenuButton a{
+        color: limegreen;
+        font-size: 10vw;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    /*------ bocne menu ----------*/
+    .categories-box{
+        position: absolute;
+
+        transform: translate(-50%, -50%);
+        text-align: left;
+        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: transparent;
+        top: 50vw;
+        left: -30vw;
+        border-radius: 0px;
+        height: 84vw;
+        min-width: 40vw;
+
+
+
+
+    }
+
+
+    .categories-box a{
+        margin-top: 0.2vw;
+        font-family: "Georgia", "Courier New", monospace;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5vw;
+    }
+
+    .dropbtn {
+        font-weight: bold;
+        margin-left: 0vw;
+        border-radius: 0px;
+        text-align: center;
+        position: relative;
+        background-color: midnightblue;
+        width: 40vw;
+        height: 6vw;
+        margin-top: 0px;
+
+        color: white;
+        padding: 1vw;
+        font-size: 3vw;
+        border: none;
+        cursor: pointer;
+    }
+
+
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-top: 0px;
+        z-index: 1;
+    }
+
+    .dropdown-content {
+        border-radius: 0vw;
+        position: relative;
+        background-color: deepskyblue;
+        min-width: 40vw;
+        min-height: 10vw;
+        text-align: center;
+        margin-left:  0vw;
+        margin-top: 0vw;
+        overflow: auto;
+
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 3;
+
+    }
+
+    .dropdown-content a {
+        margin-top: -0.1vw;
+        font-size: 3vw;
+        color: black;
+        border: none;
+        padding: 0.8vw 1.1vw;
+        text-decoration: none;
+        display: block;
+        font-weight: bolder;
+
+    }
+
+
+
+
+    /* horne menu */
+
+
+    .nav-links{
+
+        flex: 1;
+
+
+
+    }
+
+    .nav-links ul {
+        margin-top: 3vw;
+        position: absolute;
+        margin-left: -49vw;
+        display: inline-block;
+    }
+
+    .nav-links ul li a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 3vw;
+    }
+
+    .nav-logo {
+        position: absolute;
+        flex: 1;
+        text-align: left;
+        margin-top: 7vw;
+        margin-left: 2vw;
+    }
+
+    .nav-logo ul li a {
+        color: limegreen;
+        text-decoration: none;
+        font-size: 6vw;
+        font-family: "Brush Script MT";
+    }
+
+
+
+    .listed-products{
+        top: 5vw;
+        left: 18.5vw;
+        text-align: center;
+        width: 66vw;
+        height: 30vw;
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+
+
+
+    }
+
+    .main-title {
+        display: none;
+    }
+
+
+
 }
 
 
