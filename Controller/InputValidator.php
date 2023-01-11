@@ -56,6 +56,16 @@ class InputValidator
         }
     }
 
+    public function validateMailForPersonal($mail) : string {
+        if (strcmp($mail, "") == 0) {
+            return "Enter e-mail address";
+        } else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            return "Enter valid e-mail address";
+        } else {
+            return " ";
+        }
+    }
+
     public function validateMailForRecovery($mail) : string {
         if (strcmp($mail, "") == 0) {
             return "Enter e-mail address";

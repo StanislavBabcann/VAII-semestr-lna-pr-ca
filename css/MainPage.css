@@ -6,7 +6,7 @@
 }
 
 .header {
-    min-height: 100vw;
+    min-height: 100vh;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../images/uvodny.png);
     background-position: center;
@@ -236,24 +236,7 @@ h1{
     opacity: 0.65;
 }
 
-.best-products-layer h3{
-    width: 20vw;
-    font-weight: 500;
-    color: black;
-    font-size: 2vw;
-    bottom: -0.1vw;
-    left: 11vw;
-    transform: translateX(-50%);
-    position: absolute;
-    opacity: 1;
-    transition: 0.5s;
-}
 
-.best-products-layer:hover h3{
-    bottom: 6vw;
-    opacity: 1;
-
-}
 
 
 
@@ -498,7 +481,7 @@ h1{
     height: 720px;
     background: #000;
     color: #fff;
-    top: 50%;
+    top: 53%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -951,13 +934,13 @@ h1{
 }
 
 .productShowingLayout input[type="number"] {
-    width: 3vw;
+    width: 4vw;
     height: 4vw;
     background-color: white;
     color: black;
     text-align: center;
     font-size: 2vw;
-    margin-left: 46vw;
+    margin-left: 45.25vw;
     margin-top:11vw;
     border: black;
 }
@@ -1534,7 +1517,13 @@ input[type="submit"]:hover {
 
 @media (max-width: 900px) {
     .header {
-        min-height: 112vw;
+        min-height: 265vw;
+
+
+
+
+
+
 
     }
     /* bocne tlacitko pre otvorenie meny*/
@@ -1562,7 +1551,7 @@ input[type="submit"]:hover {
         display: flex;
         flex-wrap: wrap;
         background-color: transparent;
-        top: 50vw;
+        top: 52vw;
         left: -30vw;
         border-radius: 0px;
         height: 84vw;
@@ -1681,25 +1670,912 @@ input[type="submit"]:hover {
 
 
 
-    .listed-products{
-        top: 5vw;
-        left: 18.5vw;
-        text-align: center;
-        width: 66vw;
-        height: 30vw;
-        background-position: center;
-        background-size: cover;
+    /* zobrazovane produkty*/
+
+    .main-title {
         position: absolute;
-
-
+        margin-top: 5vw;
+        margin-left: -15vw;
 
     }
 
-    .main-title {
+    .main-title h1{
+        font-size: 6vw;
+        color: white;
+        margin-top: 2vw;
+
+    }
+
+    .listed-products{
+
+        top: 5vw;
+        left: 4vw;
+        text-align: center;
+        width: 90vw;
+        height: 180vw;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+
+    }
+
+
+
+    .separator{
+        margin-left: 5.5vw;
         display: none;
     }
 
+    .best-products-row{
+        margin-top: 3vw;
+        display:inline-block;
 
+    }
+
+    .best-products-column-image img{
+        margin-top: 10vw;
+        width: 30vw;
+        margin-left: 5vw;
+
+    }
+
+    .best-products-column-image h1 {
+
+        width: 30vw;
+        color: yellow;
+        font-size: 3vw;
+        position: absolute;
+        text-align: center;
+        margin-left: 14vw;
+        top: 35vw;
+
+    }
+
+    .best-products-column-image p{
+        font-size: 4vw;
+        margin-left: 11vw;
+        color: orange;
+        bottom: 0.125vw;
+        left: 4vw;
+        position: absolute;
+
+    }
+
+    .best-products-effect{
+        background: transparent;
+        height: 34.25vw;
+        width: 30vw;
+        position: absolute;
+        top: 10vw;
+        left: 5vw;
+        transition: 0.5s;
+    }
+
+
+
+    .best-products-effect h1{
+        width: 30vw;
+        left: 1vw;
+        top: 35vw;
+
+        transform: translateX(-50%);
+        position: absolute;
+        transition: 0.5s;
+
+        color: yellow;
+        font-size: 3vw;
+        height: 2vw;
+        text-align: center;
+
+
+
+    }
+
+    .best-products-effect:hover h1{
+        top: 15vw;
+        font-weight: bold;
+    }
+
+    /* dolne tlacitka na preklykavanie stranok*/
+
+    .pageNumebrsBox {
+        position: absolute;
+        width: 70vw;
+        height: 8vw;
+        top: 255vw;
+        left: 52vw;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+
+    }
+
+    .pageNumebrsBox input{
+        width: 5vw;
+        height: 5vw;
+        margin-top:0.5vw;
+        margin-left: 1vw;
+        border: none;
+        outline: none;
+        font-size: 3vw;
+        border-radius: 20px
+    }
+
+    .pageNumebrsBox input[type="submit"]:hover {
+        cursor: pointer;
+        background: limegreen;
+        color:#000;
+    }
+
+    .infoAboutHowManyProducts {
+        position: absolute;
+        margin-left: 66vw;
+        margin-top: 73vw;
+    }
+
+    .infoAboutHowManyProducts h1{
+        color: white;
+        font-size: 2vw;
+    }
+
+    /* zobrazenie konretneho produktu*/
+
+    .navBeforeCategories {
+        position: absolute;
+        margin-left: 10vw;
+        margin-top: 6vw;
+    }
+
+    .navBeforeCategories p {
+        color: white;
+        position: relative;
+        display: inline-block;
+        font-size: 2.5vw;
+    }
+
+    .navBeforeCategories a {
+        color: white;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 2.5vw;
+        text-decoration: none;
+    }
+
+    .productShowingLayout {
+        position: absolute;
+        margin-left: 10vw;
+        margin-top: 12vw;
+        width: 80vw;
+        height: 120vw;
+    }
+
+    .productShowingLayout img {
+        width: 70vw;
+        margin-left: 5vw;
+        position: absolute;
+
+
+    }
+
+    .productShowingLayout h1 {
+        color: limegreen;
+        margin-left: 8vw;
+        margin-top: 70vw;
+        position: absolute;
+        font-weight: bold;
+        font-size: 4vw;
+    }
+
+    .productShowingLayout h2 {
+        color: orange;
+        margin-left: 10vw;
+        margin-top: 90vw;
+        position: absolute;
+        font-size: 8vw;
+    }
+
+    .productShowingLayout h4 {
+
+        margin-left: -5vw;
+        margin-top: 108vw;
+        font-size: 3vw;
+        color: red;
+
+
+    }
+
+    .productShowingLayout input {
+
+        position: absolute;
+        height: 12vw;
+
+        color: #fff;
+        font-size: 4vw;
+
+    }
+
+    .productShowingLayout input[type="submit"] {
+        width: 30vw;
+        height: 12vw;
+        margin-left: 45vw;
+        margin-top: 105vw;
+        background: limegreen;
+    }
+
+    .productShowingLayout input[type="submit"]:hover
+    {
+        cursor: pointer;
+        background: #ffc107;
+        color:#000;
+
+    }
+
+    .productShowingLayout input[type="number"] {
+        width: 12vw;
+        height: 12vw;
+        background-color: white;
+        color: black;
+        text-align: center;
+        font-size: 6vw;
+        margin-left: 30vw;
+        margin-top:105vw;
+        border: black;
+    }
+
+    .selectBox select {
+        width: 30vw;
+        height: 6vw;
+        margin-left: 45vw;
+        margin-top: 85vw;
+        text-align: right;
+        font-size: 3vw;
+        position: absolute;
+
+    }
+    .selectBox .selectPackBox {
+        position: absolute;
+        margin-top: 10vw;
+    }
+
+    .selectBox .selectFlavourBox {
+        position: absolute;
+        margin-top: 2vw;
+    }
+
+
+    .productShowingLayout h3 {
+        position: absolute;
+        font-size: 3vw;
+        color: white;
+        margin-left: 8vw;
+        margin-top: 81vw;
+    }
+
+    .productShowingLayout a {
+        position: absolute;
+        margin-top: 81vw;
+        margin-left: 29vw;
+        color: limegreen;
+        font-size: 3vw;
+        text-decoration: none;
+    }
+
+    /* popisy a udaje k produktu */
+
+    .productDescription {
+        position: relative;
+        margin-top: 130vw;
+        margin-left: 5vw;
+        width: 85vw;
+
+
+    }
+
+    .productDescription h1 {
+        font-size: 5vw;
+        color:limegreen;
+        width: 85vw;
+        text-align: left;
+    }
+
+    .productDescription p {
+        margin-top: 1vw;
+        text-align: left;
+        color: white;
+        font-size: 3vw;
+    }
+
+    .keyBenefits {
+        margin-top: 4vw;
+        position: relative;
+        margin-left: 5vw;
+        width: 85vw;
+
+    }
+
+    .keyBenefits h1 {
+        font-size: 5vw;
+        color:limegreen;
+        width: 85vw;
+        text-align: left;
+    }
+
+    .keyBenefits p {
+        margin-top: 1vw;
+        text-align: left;
+        color: white;
+        font-size: 3vw;
+        font-weight: bold;
+    }
+
+    .dosage {
+        margin-top: 4vw;
+        position: relative;
+        margin-left: 5vw;
+        width: 85vw;
+
+    }
+
+    .dosage h1 {
+        font-size: 5vw;
+        color:limegreen;
+        width: 85vw;
+        text-align: left;
+    }
+
+    .dosage p {
+        margin-top: 1vw;
+        text-align: left;
+        color: white;
+        font-size: 3vw;
+    }
+
+    .nutricneHodnoty {
+        margin-top: 4vw;
+        position: relative;
+        margin-left: 5vw;
+        width: 85vw;
+
+
+    }
+
+    .nutricneHodnoty h1 {
+        font-size: 5vw;
+        color:limegreen;
+        width: 85vw;
+        text-align: left;
+    }
+
+    .nutricneHodnoty table {
+        border-collapse: collapse;
+        border: 1px solid black;
+
+    }
+
+    .nutricneHodnoty table.tabulkaNutricnychHodnot {
+        margin-top: 1vw;
+        table-layout: fixed;
+        width: 100%;
+
+    }
+
+    th,td {
+        border: 1px solid white;
+        color: white;
+        font-size: 3vw;
+        height: 5vw;
+    }
+
+    .zlozenie {
+        margin-top: 4vw;
+        position: relative;
+        margin-left: 5vw;
+        width: 85vw;
+
+    }
+
+    .zlozenie h1 {
+        font-size: 5vw;
+        color:limegreen;
+        width: 85vw;
+        text-align: left;
+    }
+
+    .zlozenie p {
+        margin-top: 1vw;
+        text-align: left;
+        color: white;
+        font-size: 3vw;
+
+    }
+
+    /* nakupny kosik */
+
+    .basket {
+        position: absolute;
+        width: 90vw;
+        height: 16vw;
+        margin-left: 3vw;
+
+        margin-top: 10vw;
+
+
+
+
+    }
+
+    .basket h1 {
+        font-size: 8vw;
+        margin-left: 14vw;
+        color: limegreen;
+        position: absolute;
+    }
+
+    .basket .columns {
+        position: relative;
+        margin-left: -5vw;
+        margin-top: 8vw;
+
+
+
+    }
+
+
+    .basket .columns h1 {
+        color: yellow;
+        position: relative;
+        margin-left: 2vw;
+        margin-top: 3vw;
+        display: inline-block;
+        font-size: 2.5vw;
+    }
+
+    .basket .columns h3 {
+        color: yellow;
+        position: relative;
+        margin-left: 6vw;
+        margin-top: 3vw;
+        display: inline-block;
+        font-size: 2.5vw;
+    }
+
+    .basket .columns h2 {
+        color: yellow;
+        position: relative;
+        margin-left: 18vw;
+        margin-top: 3vw;
+        display: inline-block;
+        font-size: 2.5vw;
+    }
+
+
+
+
+    .basketProducts .kupon {
+        margin-left: -2vw;
+        margin-top: 3vw;
+        position: relative;
+        width: 92vw;
+        height: 10vw;
+        background-color: white;
+    }
+
+    .basketProducts .kupon h1 {
+        font-weight: bold;
+        position: absolute;
+        font-size: 3vw;
+        color: limegreen;
+        margin-left: 1vw;
+        margin-top: 1vw;
+    }
+
+    .basketProducts .kupon input[type="text"] {
+        position: absolute;
+        font-size: 3vw;
+        color: black;
+        margin-left: 36vw;
+        width: 24vw;
+        height: 3vw;
+        margin-top: 1vw;
+    }
+
+    .basketProducts .kupon input[type="submit"] {
+        position: absolute;
+        font-size: 4vw;
+        color: black;
+        margin-left: 80vw;
+        background-color: limegreen;
+        width: 10vw;
+        height: 5vw;
+        margin-top: 2vw;
+        border-radius: 1vw;
+        font-weight: bold;
+    }
+
+    .basketProducts .kupon h2 {
+        font-weight: bold;
+        position: absolute;
+        font-size: 3vw;
+        color: black;
+        margin-left: 1vw;
+        margin-top: 5vw;
+    }
+
+    .basketProducts .kupon input[type="submit"]:hover {
+        background-color: yellow;
+    }
+
+    .basketProducts {
+        position: relative;
+        margin-left: 4vw;
+        margin-top: 25vw;
+        width: 92vw;
+    }
+
+    .basketProducts .oneProduct {
+        margin-top: 0.25vw;
+        position: relative;
+        margin-left: -2vw;
+        width: 92vw;
+        height: 15vw;
+        background-color: white;
+    }
+
+
+    .basketProducts .oneProduct img {
+        width: 12vw;
+        margin-left: 1vw;
+        position: absolute;
+    }
+
+    .basketProducts .oneProduct h2{
+        margin-top: 10vw;
+        margin-left: 13vw;
+        color:black;
+        position: absolute;
+        font-size: 2.5vw;
+    }
+
+    .basketProducts .oneProduct a {
+        position: absolute;
+        font-size: 2.5vw;
+        margin-top: 1vw;
+        margin-left: 13vw;
+        width: 26vw;
+        color: limegreen;
+        font-weight: bolder;
+        text-decoration: none;
+    }
+
+
+
+    .basketProducts .oneProduct input[type = "number"] {
+        position: absolute;
+        margin-top: 3.5vw;
+        margin-left: 48vw;
+        font-size: 4vw;
+        text-align: center;
+        width: 8vw;
+        height: 6vw;
+    }
+
+    .basketProducts .oneProduct h3 {
+        position: absolute;
+        margin-left: 64vw;
+        margin-top: 6vw;
+        font-size: 2.5vw;
+    }
+
+    .basketProducts .oneProduct h4 {
+        position: absolute;
+        margin-left: 75.5vw;
+        font-size: 2.5vw;
+        margin-top: 6vw;
+        text-align: center;
+        font-weight: bold;
+
+    }
+
+    .basketProducts .oneProduct .deleteOption {
+        width: 5vw;
+        height: 9vw;
+
+
+        position: absolute;
+        margin-left: 86vw;
+        margin-top: 0vw;
+
+
+    }
+
+    .basketProducts .oneProduct .deleteOption a {
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        width: 1vw;
+        font-size: 2vw;
+        position: absolute;
+        margin-left: 1.5vw;
+        color: red;
+        font-weight: bold;
+    }
+
+    .basketProducts .zuctovanie {
+        margin-left: -2vw;
+        margin-top: 3vw;
+        width: 92vw;
+        height: 30vw;
+        background-color: white;
+    }
+
+    .basketProducts .zuctovanie .pokracuj {
+        position: absolute;
+        margin-top: 20vw;
+        margin-left: 2vw;
+
+    }
+
+    .basketProducts .zuctovanie .pokracuj a {
+        font-size: 3vw;
+        color: black;
+        text-decoration: none;
+    }
+
+    .basketProducts .zuctovanie .pokracuj a:hover {
+        text-decoration: underline;
+
+    }
+
+    .basketProducts .zuctovanie .zmazVsetko {
+        position: absolute;
+        margin-top: 25vw;
+        margin-left: 2vw;
+
+        width: 24vw;
+
+    }
+
+    .basketProducts .zuctovanie .zmazVsetko a {
+        font-size: 3vw;
+        color: black;
+        text-decoration: none;
+    }
+
+    .basketProducts .zuctovanie .zmazVsetko a:hover {
+        text-decoration: underline;
+    }
+
+    .basketProducts .zuctovanie h1 {
+        position: absolute;
+        font-size: 5vw;
+        font-weight: bold;
+        margin-top: 1vw;
+        margin-left: 2vw;
+        color: black;
+    }
+
+    .basketProducts .zuctovanie h2 {
+        position: absolute;
+        font-size: 5vw;
+        font-weight: bold;
+        margin-top: 1vw;
+        margin-left: 35vw;
+        color: black;
+    }
+
+    .basketProducts .zuctovanie h3 {
+        position: absolute;
+        font-size: 5vw;
+        margin-top: 7vw;
+        margin-left: 35vw;
+        color: black;
+    }
+
+    .basketProducts .zuctovanie input[type="submit"] {
+        position: absolute;
+        width: 30vw;
+        height: 8vw;
+        margin-top: 20vw;
+        margin-left: 60vw;
+        border-radius: 1vw;
+        background-color: limegreen;
+        font-size: 5vw;
+        font-weight: bold;
+    }
+
+    .basketProducts .zuctovanie input[type="submit"]:hover {
+        background-color: yellow;
+
+    }
+
+    /* volba dopravy */
+
+    .transportation {
+        position: absolute;
+        margin-left: 11vw;
+        margin-top: 10vw;
+        width: 76vw;
+        height:35vw;
+        background-color: white;
+    }
+
+    .transportation h1 {
+        position: relative;
+        font-size: 5vw;
+        color: limegreen;
+        margin-left: 2vw;
+        margin-top: 1vw;
+    }
+
+
+    .transportation input[type="radio"] {
+        position: relative;
+
+        margin-top: 5vw;
+        margin-left: 2vw;
+        display: block;
+    }
+
+    .transportation label {
+        padding:0;
+        margin-top: -3.5vw;
+        color: black;
+        font-weight: bold;
+        font-size: 4vw;
+        display: block;
+        margin-left: 6vw;
+    }
+
+    .transportation p {
+        font-size: 2vw;
+        margin-left: 6vw;
+    }
+
+    .payment {
+
+        position: absolute;
+        margin-left: 11vw;
+        margin-top: 48vw;
+        width: 76vw;
+        height:35vw;
+        background-color: white;
+    }
+
+    .payment h1 {
+        position: relative;
+        font-size: 5vw;
+        color: limegreen;
+        margin-left: 2vw;
+        margin-top: 1vw;
+    }
+
+
+    .payment input[type="radio"] {
+        position: relative;
+        margin-top: 3vw;
+        margin-left: 2vw;
+        display: block;
+    }
+
+    .payment label {
+        margin-top: -3.5vw;
+        color: black;
+        font-weight: bold;
+        font-size: 4vw;
+        display: block;
+        margin-left: 6vw;
+    }
+
+    .payment p {
+        font-size: 2vw;
+        margin-left: 6vw;
+    }
+
+    .makeOrder {
+        position: absolute;
+        margin-left:28vw;
+        width: 22vw;
+        height: 10vw;
+        margin-top: 85vw;
+
+    }
+
+    .makeOrder input[type="submit"] {
+
+        width: 40vw;
+        height: 15vw;
+        margin-top: 1vw;
+        margin-left: 1vw;
+        border-radius: 1vw;
+        background-color: limegreen;
+        font-size: 5vw;
+        font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+        background-color: yellow;
+    }
+
+    /* prihlasovaci formular*/
+
+    .loginbox{
+
+        top: 300px;
+
+    }
+
+    /* obnova hesla */
+
+    .recovery-box{
+        top: 350px;
+    }
+
+    /* registracia */
+
+    .registrationBox{
+        top: 450px;
+    }
+
+    /* uprav udaje uzivatela */
+    .editProfileBox{
+        top: 400px;
+    }
+
+    /* zmenHeslo */
+    .changePasswordBox{
+
+        top: 300px;
+
+    }
+
+    /* menu pre prihlaseneho uzivatela */
+
+    .starterBox{
+        border-radius: 3vw;
+        width: 80vw;
+        height: 80vw;
+        background: #000;
+        color: #fff;
+        top: 55vw;
+        left: 48vw;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+
+    }
+
+    .starterBox input{
+        width: 70vw;
+        margin-top:1vw;
+        border: none;
+        outline: none;
+        height: 12vw;
+        margin-left: 5vw;
+        color: #fff;
+        font-size: 5vw;
+        border-radius: 1.8vw;
+    }
+
+    .starterBox input[type="submit"] {
+        background: limegreen;
+    }
+
+
+
+
+
+
+    .starterBox input[type="submit"]:hover
+    {
+        cursor: pointer;
+        background: #ffc107;
+        color:#000;
+
+    }
+
+    .starterBox h1 {
+        text-align: center;
+        margin-top: 1vw;
+        font-size: 7vw;
+    }
 
 }
 

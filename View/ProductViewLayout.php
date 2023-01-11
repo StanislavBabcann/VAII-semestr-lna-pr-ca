@@ -29,7 +29,7 @@ include_once "../Controller/ProductViewLayoutHeader.php";
     ?>
 
     <div class="navBeforeCategories">
-        <a href="homePage.php"><?php echo "Main page"?></a>
+        <a href="../index.php"><?php echo "Main page"?></a>
 
         <p><?php echo $lomitko?></p>
 

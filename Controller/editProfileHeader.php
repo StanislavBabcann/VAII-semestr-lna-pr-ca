@@ -47,7 +47,7 @@ if (isset($_GET['potvrdit'])) {
     $editMesto = $_REQUEST['mesto'];
     $editUlica = $_REQUEST['ulica'];
 
-    if ($_SESSION['titulPreFormu'] == "Edit profile") {
+
 
         $upravenyPouzivatel = new Pouzivatel();
 
@@ -58,12 +58,15 @@ if (isset($_GET['potvrdit'])) {
         $nameErr = $inpValidator->validateFirstName($editMeno);
         $lastErr = $inpValidator->validateLastName($editLast);
 
+        if ($_SESSION['titulPreFormu'] == "Edit profile") {
         if (strcmp($_SESSION['sesMail'], $editMail) != 0) {
             $mailErr = $inpValidator->validateMail($editMail);
+        }} else {
+            $mailErr = $inpValidator->validateMailForPersonal($editMail);
         }
 
         $cityErr = $inpValidator->validateCity($editMesto);
-        $ulicaErr = $inpValidator->validateStreet($editLast);
+        $ulicaErr = $inpValidator->validateStreet($editUlica);
 
 
         if (strcmp($nameErr, " ") != 0 || strcmp($lastErr, " ") != 0 ||
@@ -73,35 +76,34 @@ if (isset($_GET['potvrdit'])) {
 
         } else {
 
+            if ($_SESSION['titulPreFormu'] == "Edit profile") {
+                $upravenyPouzivatel->setMeno($editMeno);
+                $upravenyPouzivatel->setPriezvisko($editLast);
+                $upravenyPouzivatel->setMail($editMail);
+                $upravenyPouzivatel->setMesto($editMesto);
+                $upravenyPouzivatel->setUlica($editUlica);
+                $upravenyPouzivatel->setDruhyMail($staryMail);
 
-            $upravenyPouzivatel->setMeno($editMeno);
-            $upravenyPouzivatel->setPriezvisko($editLast);
-            $upravenyPouzivatel->setMail($editMail);
-            $upravenyPouzivatel->setMesto($editMesto);
-            $upravenyPouzivatel->setUlica($editUlica);
-            $upravenyPouzivatel->setDruhyMail($staryMail);
+
+                $db->upravInfoPouzivatela($upravenyPouzivatel);
+
+                $_SESSION['sesMail'] = $editMail;
+
+                header("location: ../View/AccountStarter.php");
+                die();
+            } else {
+                $_SESSION['ordMeno'] = $editMeno;
+                $_SESSION['ordPriezvisko'] = $editLast;
+                $_SESSION['ordMail'] = $editMail;
+                $_SESSION['ordMesto'] = $editMesto;
+                $_SESSION['ordUlica'] = $editUlica;
 
 
-            $db->upravInfoPouzivatela($upravenyPouzivatel);
+                header("location: ../View/VolbaDopravy.php");
+            }
+            
 
-            $_SESSION['sesMail'] = $editMail;
-
-            header("location: ../View/AccountStarter.php");
-            die();
         }
-    } else {
-        $_SESSION['ordMeno'] = $editMeno;
-        $_SESSION['ordPriezvisko'] = $editLast;
-        $_SESSION['ordMail'] = $editMail;
-        $_SESSION['ordMesto'] = $editMesto;
-        $_SESSION['ordUlica'] = $editUlica;
 
-
-        header("location: ../View/VolbaDopravy.php");
-
-
-
-
-    }
 
 }

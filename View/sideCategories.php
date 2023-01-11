@@ -3,53 +3,9 @@ include_once "../Controller/sideCategoriesHeader.php";
 ?>
 
 
-<head>
-<meta name="viewport" content="width=device-width">
-</head>
-
-<script>
-
-    const ids = ["myDropdown", "myDropdown2","myDropdown3","myDropdown4","myDropdown5","myDropdown6",
-        "myDropdown7","myDropdown8","myDropdown9"];
-
-    function myFunction(number) {
-        deleteBeforeOpenedMenu();
-        document.getElementById(ids[number]).classList.toggle("show");
-
-    }
 
 
-
-    function deleteBeforeOpenedMenu() {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            deleteBeforeOpenedMenu();
-        }
-    }
-
-
-
-    var limitFunc = function(){
-        if (window.outerWidth>816){
-
-            document.getElementById("categories-box").style.left = "12vw";
-
-        } else {
-            document.getElementById("categories-box").style.left = "-30vw";
-        }
-    };
-
-    window.addEventListener("resize", limitFunc);
+<script src="../Script/javascripts.js"  language="JavaScript" type="text/javascript">
 
 
 </script>
