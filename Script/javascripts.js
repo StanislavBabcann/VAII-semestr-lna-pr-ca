@@ -252,8 +252,6 @@ window.onclick = function(event) {
     }
 }
 
-
-
 var limitFunc = function(){
     if (window.outerWidth>816){
 

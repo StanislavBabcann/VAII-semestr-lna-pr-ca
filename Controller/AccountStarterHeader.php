@@ -6,7 +6,7 @@ session_start();
 
 $db = new Database();
 
-$_SESSION['logged'] = $_SESSION['logged'];
+
 
 if (isset($_GET['upravProfilBtn'])) {
     $_SESSION['titulPreFormu'] = "Edit profile";

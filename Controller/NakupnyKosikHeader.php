@@ -14,7 +14,7 @@ $outputFormator = new OutputFormator();
 $basketManager = new BasketManager();
 $idNakupujuceho = $_SESSION['ipcka'];
 
-if (isset($_GET['logged'])) {
+if (isset($_SESSION['logged'])) {
     if ($_SESSION['logged'] == 1) {
         $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
         $idNakupujuceho = $pouzivatel->getId();

@@ -43,6 +43,14 @@ if ($wayOfFiltering == "hlavna") {
     $produkty = $db->dajProduktyPodlaVyrobcu($chosenCategory);
 } else {
     $produkty = $db->dajVsetkyProdukty();
+
+    $pomocneProdukty = array();
+
+    for ($i = 0; $i < 50; $i++) {
+        $pomocneProdukty[$i] = $produkty[$i];
+    }
+
+    $produkty = $pomocneProdukty;
 }
 
 $currentPage = 1;

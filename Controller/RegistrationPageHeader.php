@@ -64,7 +64,7 @@ if (isset($_GET['regPotvrdit'])) {
         $newPouzivatel->setHeslo($hashed_password);
 
         $_SESSION['sesMail'] = $newPouzivatel->getMail();
-
+        $_SESSION['logged'] = 1;
 
         $db->pridajPouzivatela($newPouzivatel);
 

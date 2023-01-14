@@ -23,18 +23,22 @@ $editMesto = null;
 $editUlica = null;
 $staryMail = null;
 
+
 $mode = $_SESSION['titulPreFormu'];
 
 if (isset($_SESSION['logged'])) {
-    $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
 
     if ($_SESSION['logged'] == 1) {
+        $pouzivatel = $db->nacitajInfoUzivatela($_SESSION['sesMail']);
+
+
         $editMeno = $pouzivatel->getMeno();
         $editLast = $pouzivatel->getPriezvisko();
         $editMail = $pouzivatel->getMail();
         $editMesto = $pouzivatel->getMesto();
         $editUlica = $pouzivatel->getUlica();
         $staryMail = $pouzivatel->getMail();
+
     }
 }
 

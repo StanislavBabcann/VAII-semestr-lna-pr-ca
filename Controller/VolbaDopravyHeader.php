@@ -71,7 +71,7 @@ if (isset($_GET['odosliObjednavku'])) {
 
 
 
-        $db->odoberVariantProduktuZoSkladu($idProduktu, $hmotnost);
+        $db->odoberVariantProduktuZoSkladu($idProduktu, $hmotnost, $pocetKusov);
     }
 
     $vystup = $vystup."\n";

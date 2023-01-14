@@ -5,8 +5,7 @@ include_once "../Controller/sideCategoriesHeader.php";
 
 
 
-<script src="../Script/javascripts.js"  language="JavaScript" type="text/javascript">
-
+<script src="../Script/javascripts.js" language="JavaScript" type="text/javascript">
 
 </script>
 
@@ -66,8 +65,8 @@ include_once "../Controller/sideCategoriesHeader.php";
             <a href="?podKategoria=BCAA">BCAA</a>
             <a href="?podKategoria=Glutamine">GLUTAMINE</a>
             <a href="?podKategoria=Arginine">ARGININE</a>
-            <a href="?podKategoria=Single%20creatine">SINGLE COMPONENT</a>
-            <a href="?podKategoria=Multi%20creatine">MULTI COMPONENT</a>
+            <a href="?podKategoria=Single">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Multi">MULTI COMPONENT</a>
         </div>
 
 

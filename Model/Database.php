@@ -133,8 +133,14 @@ class Database
     }
 
     public function dajPrichuteProduktu($idProduktu) {
-        $sql = $this->pdo->prepare("SELECT prichut FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0");
+        $sql = $this->pdo->prepare("SELECT distinct prichut FROM varianty_produktov WHERE id_produktu = ? && pocetKusov != 0");
         $sql->execute([$idProduktu]);
+        return $sql->fetchAll(PDO::FETCH_CLASS, DostupnaPrichutPreBalenie::class);
+    }
+
+    public function dajPrichutePodlaBalenia($idProduktu, $balenie) {
+        $sql = $this->pdo->prepare("SELECT prichut FROM varianty_produktov WHERE id_produktu = ? && balenie = ? && pocetKusov != 0");
+        $sql->execute([$idProduktu, $balenie]);
         return $sql->fetchAll(PDO::FETCH_CLASS, DostupnaPrichutPreBalenie::class);
     }
 
@@ -197,9 +203,9 @@ class Database
         $sql->execute([$idUzivatela]);
     }
 
-    public function odoberVariantProduktuZoSkladu($idProduktu, $balenie) {
-        $sql = $this->pdo->prepare("UPDATE  varianty_produktov SET pocetKusov = pocetKusov - 1 WHERE id_produktu = ? && balenie = ?");
-        $sql->execute([$idProduktu, $balenie]);
+    public function odoberVariantProduktuZoSkladu($idProduktu, $balenie, $pocetKusov) {
+        $sql = $this->pdo->prepare("UPDATE  varianty_produktov SET pocetKusov = pocetKusov - ? WHERE id_produktu = ? && balenie = ?");
+        $sql->execute([$pocetKusov, $idProduktu, $balenie]);
     }
 
     public function dajPocetProduktovNaSkladePodlaIdABalenia($idProduktu, $balenie) {

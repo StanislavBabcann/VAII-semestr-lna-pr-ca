@@ -35,7 +35,7 @@ include_once "../Controller/changePasswordHeader.php"
             <p>Re-enter password</p>
             <input type="password" name="changePassRe" placeholder="Re-enter password">
             <span class = "error" style="color: red"> <?php echo $secondPasErr;?></span>
-            <input type="submit" name="potvrZmenHesla" value="Change password" onclick="return validateEditPasswordForm(changePasswordForm.changePassword.value, changePasswordForm.changePassRe.value)">
+            <input type="submit" name="potvrZmenHesla" value="Change password" onclick="confirmChangePassword()">
         </form>
 
 

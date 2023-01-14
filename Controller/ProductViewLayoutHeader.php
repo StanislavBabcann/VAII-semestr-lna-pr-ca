@@ -14,6 +14,7 @@ session_start();
 $db = new Database();
 
 
+
 $aktualneIdProduktu = $_SESSION['currentProductId'];
 $infoAboutCurrentProduct = $db->dajInfoOProdukte($aktualneIdProduktu);
 
