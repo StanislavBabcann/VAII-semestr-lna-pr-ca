@@ -1,10 +1,18 @@
 <?php
-    include_once "../Controller/RegistrationPageHeader.php";
+include_once "../Controller/RegistrationPageHeader.php";
+/** @var \Controller\RegistrationPageHeader $regMeno */
+/** @var \Controller\RegistrationPageHeader $nameErr */
+/** @var \Controller\RegistrationPageHeader $regLast */
+/** @var \Controller\RegistrationPageHeader $lastErr */
+/** @var \Controller\RegistrationPageHeader $regMail */
+/** @var \Controller\RegistrationPageHeader $mailErr */
+/** @var \Controller\RegistrationPageHeader $regMesto */
+/** @var \Controller\RegistrationPageHeader $cityErr */
+/** @var \Controller\RegistrationPageHeader $regUlica */
+/** @var \Controller\RegistrationPageHeader $ulicaErr */
+/** @var \Controller\RegistrationPageHeader $firstPasErr */
+/** @var \Controller\RegistrationPageHeader $secondPasErr */
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">

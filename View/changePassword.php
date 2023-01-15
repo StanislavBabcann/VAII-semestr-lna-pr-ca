@@ -1,6 +1,7 @@
 <?php
 include_once "../Controller/changePasswordHeader.php"
-
+/** @var \Controller\changePasswordHeader $firstPasErr */
+/** @var \Controller\changePasswordHeader $secondPasErr */
 ?>
 
 

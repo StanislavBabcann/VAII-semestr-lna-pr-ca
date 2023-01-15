@@ -1,5 +1,8 @@
 <?php
 include_once "../Controller/LoginPageHeader.php";
+/** @var \Controller\LoginPageHeader $mailAdress */
+/** @var \Controller\LoginPageHeader $mailErr */
+/** @var \Controller\LoginPageHeader $passERR */
 ?>
 
 

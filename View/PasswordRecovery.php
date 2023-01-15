@@ -1,5 +1,7 @@
 <?php
-    include_once "../Controller/PasswordRecoveryHeader.php";
+include_once "../Controller/PasswordRecoveryHeader.php";
+/** @var \Controller\PasswordRecoveryHeader $mailErr */
+/** @var \Controller\PasswordRecoveryHeader $recMail */
 ?>
 
 

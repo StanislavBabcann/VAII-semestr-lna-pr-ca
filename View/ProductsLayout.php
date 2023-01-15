@@ -1,5 +1,16 @@
 <?php
 include "../Controller/ProductsLayoutHeader.php";
+/** @var \Controller\ProductsLayoutHeader $loginManager */
+/** @var \Controller\ProductsLayoutHeader $chosenCategory */
+/** @var \Controller\ProductsLayoutHeader $productShowingManager */
+/** @var \Controller\ProductsLayoutHeader $arrayForPrintingNumbers */
+/** @var \Controller\ProductsLayoutHeader $produkty */
+/** @var \Controller\ProductsLayoutHeader $outFormator */
+/** @var \Controller\ProductsLayoutHeader $cenyProduktov */
+/** @var \Controller\ProductsLayoutHeader $pocetProduktov */
+/** @var \Controller\ProductsLayoutHeader $currentPage */
+/** @var \Controller\ProductsLayoutHeader $numberOfFirst */
+/** @var \Controller\ProductsLayoutHeader $mailErr */
 ?>
 
 

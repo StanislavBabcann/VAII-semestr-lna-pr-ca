@@ -1,7 +1,17 @@
 <?php
-
 include_once "../Controller/editProfileHeader.php";
-
+/** @var \Controller\editProfileHeader $loginManager */
+/** @var \Controller\editProfileHeader $editMeno */
+/** @var \Controller\editProfileHeader $nameErr */
+/** @var \Controller\editProfileHeader $editLast */
+/** @var \Controller\editProfileHeader $lastErr */
+/** @var \Controller\editProfileHeader $editMail */
+/** @var \Controller\editProfileHeader $mailErr */
+/** @var \Controller\editProfileHeader $editMesto */
+/** @var \Controller\editProfileHeader $cityErr */
+/** @var \Controller\editProfileHeader $editUlica */
+/** @var \Controller\editProfileHeader $ulicaErr */
+/** @var \Controller\editProfileHeader $mode */
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,10 @@
 <?php
 include_once "../Controller/NakupnyKosikHeader.php";
+/** @var \Controller\NakupnyKosikHeader $loginManager */
+/** @var \Controller\NakupnyKosikHeader $produktyKosiku */
+/** @var \Controller\NakupnyKosikHeader $db */
+/** @var \Controller\NakupnyKosikHeader $outputFormator*/
+/** @var \Controller\NakupnyKosikHeader $basketManager */
 ?>
 
 <!DOCTYPE html>

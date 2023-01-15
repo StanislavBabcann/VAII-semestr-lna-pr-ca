@@ -1,7 +1,25 @@
 <?php
 
 include_once "../Controller/ProductViewLayoutHeader.php";
-
+/** @var \Controller\ProductViewLayoutHeader $lomitko */
+/** @var \Controller\ProductViewLayoutHeader $hlavnaKategoria */
+/** @var \Controller\ProductViewLayoutHeader $podKategoria */
+/** @var \Controller\ProductViewLayoutHeader $cestaKObrazku */
+/** @var \Controller\ProductViewLayoutHeader $nazovProduktu */
+/** @var \Controller\ProductViewLayoutHeader $arrayOfBalenia */
+/** @var \Controller\ProductViewLayoutHeader $db */
+/** @var \Controller\ProductViewLayoutHeader $aktualneIdProduktu */
+/** @var \Controller\ProductViewLayoutHeader $defalutPrichute */
+/** @var \Controller\ProductViewLayoutHeader $defaultCena */
+/** @var \Controller\ProductViewLayoutHeader $loginManager */
+/** @var \Controller\ProductViewLayoutHeader $vyrobca */
+/** @var \Controller\ProductViewLayoutHeader $warning */
+/** @var \Controller\ProductViewLayoutHeader $hlavnyNadpis */
+/** @var \Controller\ProductViewLayoutHeader $popisProduktu */
+/** @var \Controller\ProductViewLayoutHeader $arrayOfBenefity */
+/** @var \Controller\ProductViewLayoutHeader $recomendedDosage */
+/** @var \Controller\ProductViewLayoutHeader $arrayNutricnych */
+/** @var \Controller\ProductViewLayoutHeader $zlozenieProduktu */
 
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 include_once "../Controller/VolbaDopravyHeader.php"
+/** @var \Controller\VolbaDopravyHeader $loginManager */
 ?>
 
 <!DOCTYPE html>

@@ -65,8 +65,8 @@ include_once "../Controller/sideCategoriesHeader.php";
             <a href="?podKategoria=BCAA">BCAA</a>
             <a href="?podKategoria=Glutamine">GLUTAMINE</a>
             <a href="?podKategoria=Arginine">ARGININE</a>
-            <a href="?podKategoria=Single">SINGLE COMPONENT</a>
-            <a href="?podKategoria=Multi">MULTI COMPONENT</a>
+            <a href="?podKategoria=Single%20component">SINGLE COMPONENT</a>
+            <a href="?podKategoria=Multi%20component">MULTI COMPONENT</a>
         </div>
 
 
